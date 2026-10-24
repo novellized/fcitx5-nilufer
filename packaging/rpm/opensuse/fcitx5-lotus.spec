@@ -1,9 +1,9 @@
 Name:           fcitx5-lotus
 Version:        6.0.0
 Release:        1
-Summary:        Vietnamese input method for fcitx5
+Summary:        Turkish Telex input method for fcitx5 (Nilüfer)
 License:        GPL-3.0-or-later
-URL:            https://github.com/LotusInputMethod/fcitx5-lotus
+URL:            https://github.com/novellized/fcitx5-nilufer
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  cmake
@@ -28,7 +28,7 @@ Requires:       python3-dbus-python
 Requires:       acl
 
 %description
-Vietnamese input method for fcitx5
+Turkish Telex input method for fcitx5 (Nilüfer)
 
 %prep
 %setup -q

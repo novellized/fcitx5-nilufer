@@ -82,8 +82,8 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   meta = {
-    description = "Vietnamese input method engine for Fcitx5";
-    homepage = "https://github.com/LotusInputMethod/fcitx5-lotus";
+    description = "Turkish Telex input method engine for Fcitx5 (Nilüfer)";
+    homepage = "https://github.com/novellized/fcitx5-nilufer";
     license = with lib.licenses; [
       gpl3Plus
     ];
