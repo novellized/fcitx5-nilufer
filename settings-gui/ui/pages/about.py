@@ -108,7 +108,7 @@ class AboutPage(QWidget):
         btn_bug.clicked.connect(
             lambda: QDesktopServices.openUrl(
                 QUrl(
-                    "https://github.com/LotusInputMethod/fcitx5-lotus/issues/new?template=bug_report.yml"
+                    "https://github.com/novellized/fcitx5-nilufer/issues/new"
                 )
             )
         )
@@ -119,7 +119,7 @@ class AboutPage(QWidget):
         btn_feature.clicked.connect(
             lambda: QDesktopServices.openUrl(
                 QUrl(
-                    "https://github.com/LotusInputMethod/fcitx5-lotus/issues/new?template=feature_request.yml"
+                    "https://github.com/novellized/fcitx5-nilufer/issues/new"
                 )
             )
         )
@@ -134,14 +134,27 @@ class AboutPage(QWidget):
         layout.addWidget(line)
 
         # Credits Section
-        credits_title = QLabel(_("Developed by"))
+        credits_title = QLabel(_("Credits & Acknowledgements"))
         credits_title.setObjectName("CreditsTitle")
         layout.addWidget(credits_title, alignment=Qt.AlignCenter)
+
+        credits_desc = QLabel(
+            _(
+                "Nilüfer is adapted from and powered by the exceptional work of "
+                '<a href="https://github.com/LotusInputMethod/fcitx5-lotus" style="text-decoration: underline;"><b>fcitx5-lotus</b></a>.<br>'
+                "Heartfelt gratitude to Nguyen Hoang Ky, Vo Ngo Hoang Thanh, CSSlayer, and all Lotus contributors."
+            )
+        )
+        credits_desc.setTextFormat(Qt.RichText)
+        credits_desc.setOpenExternalLinks(True)
+        credits_desc.setWordWrap(True)
+        credits_desc.setAlignment(Qt.AlignCenter)
+        layout.addWidget(credits_desc)
 
         # General Contributors Link
         contributors_link = QLabel(
             '<a href="https://github.com/LotusInputMethod/fcitx5-lotus/graphs/contributors" style="text-decoration: none;">'
-            + _("Fcitx5 Lotus Contributors")
+            + _("View fcitx5-lotus Contributors")
             + "</a>"
         )
         contributors_link.setOpenExternalLinks(True)
@@ -176,6 +189,7 @@ class AboutPage(QWidget):
         # Third-party & Upstream Info
         third_party_info = QLabel(
             _(
+                "Adapted from <b>fcitx5-lotus</b> (GPL-3.0-or-later).<br>"
                 "Based on upstream work originally licensed under <b>LGPL-2.1-or-later</b>.<br>"
                 "Includes third-party components licensed under the <b>MIT License</b>."
             )

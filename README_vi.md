@@ -155,6 +155,26 @@ Dự án này tuân thủ cấu trúc của [all-contributors](https://github.co
 
 ---
 
+<a id="ghi-công"></a>
+
+## 🙏 Ghi công & Cảm ơn
+
+Nilüfer được phát triển và chuyển đổi từ bộ gõ hiện đại [**fcitx5-lotus**](https://github.com/LotusInputMethod/fcitx5-lotus). Xin gửi lời tri ân sâu sắc và ghi nhận toàn bộ công lao tới nhóm phát triển và duy trì fcitx5-lotus:
+
+- **Nguyễn Hoàng Kỳ** ([@nhktmdzhg](https://github.com/nhktmdzhg))
+- **Võ Ngô Hoàng Thành** ([@thanhpy2009](https://github.com/thanhpy2009))
+- **Weng Xuetian (CSSlayer)** ([@csslayer](https://github.com/wengxt))
+- Toàn thể các thành viên đã và đang đóng góp cho cộng đồng [LotusInputMethod/fcitx5-lotus](https://github.com/LotusInputMethod/fcitx5-lotus).
+
+Kiến trúc C++20 tối ưu, cơ chế uinput daemon mượt mà cùng khả năng tích hợp chặt chẽ vào Fcitx5 của fcitx5-lotus là nền tảng cốt lõi giúp Nilüfer trở thành bộ gõ tiếng Thổ Nhĩ Kỳ tiện lợi trên Linux. Chi tiết ghi công đầy đủ có tại [`CREDITS`](CREDITS).
+
+Đồng thời trân trọng ghi công các dự án tiền thân:
+- [bamboo-core](https://github.com/BambooEngine/bamboo-core) — Lương Thanh Lam (MIT).
+- [VMK](https://github.com/thanhpy2009/VMK) — Võ Ngô Hoàng Thành (GPL-3.0-or-later).
+- [fcitx5-bamboo](https://github.com/fcitx/fcitx5-bamboo) — CSSlayer (LGPL-2.1).
+
+---
+
 <a id="giấy-phép"></a>
 
 ## 📃 Giấy phép
@@ -163,11 +183,13 @@ Dự án được phân phối dưới giấy phép **GNU General Public License
 
 Các thư viện bên thứ ba (bao gồm các thành phần theo giấy phép MIT) vẫn giữ nguyên bản quyền của các tác giả gốc. Cụ thể:
 
+- **[fcitx5-lotus](https://github.com/LotusInputMethod/fcitx5-lotus)** — nền tảng gốc mà Nilüfer kế thừa và chuyển đổi, GPL-3.0-or-later.
 - **[bamboo-core](https://github.com/BambooEngine/bamboo-core)** — engine gõ tiếng Việt gốc bằng Go, MIT, © 2018 Luong Thanh Lam. Bản MIT được giữ tại [`lotus/LICENSE.bamboo-core`](lotus/LICENSE.bamboo-core).
-- **[VMK](https://github.com/thanhpy2009/VMK)** — dự án mà addon này fork trực tiếp, GPL-3.0-or-later.
+- **[VMK](https://github.com/thanhpy2009/VMK)** — dự án mà fcitx5-lotus fork trực tiếp, GPL-3.0-or-later.
 - **[fcitx5-bamboo](https://github.com/fcitx/fcitx5-bamboo)** — addon fcitx5 mà phần glue được dựa theo, LGPL-2.1.
 
-Phần C++ của engine (`lotus/`) là bản port từ bamboo-core và phát hành dưới GPL-3.0-or-later. Danh sách ghi công đầy đủ có trong [`CREDITS`](CREDITS) và trong mục **About** của ứng dụng.
+Danh sách ghi công đầy đủ có trong [`CREDITS`](CREDITS) và trong mục **About** của ứng dụng cài đặt.
+
 
 ---
 

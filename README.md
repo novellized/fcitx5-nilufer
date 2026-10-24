@@ -125,6 +125,25 @@ ctest --output-on-failure
 
 ---
 
+## 🙏 Acknowledgements & Credits
+
+Nilüfer is adapted from and proudly built upon the modern C++20 architecture of [**fcitx5-lotus**](https://github.com/LotusInputMethod/fcitx5-lotus). We express our deepest gratitude and full credit to the fcitx5-lotus development team and maintainers:
+
+- **Nguyen Hoang Ky** ([@nhktmdzhg](https://github.com/nhktmdzhg))
+- **Vo Ngo Hoang Thanh** ([@thanhpy2009](https://github.com/thanhpy2009))
+- **Weng Xuetian (CSSlayer)** ([@csslayer](https://github.com/wengxt))
+- All contributors to the [LotusInputMethod/fcitx5-lotus](https://github.com/LotusInputMethod/fcitx5-lotus) project.
+
+Their outstanding work in creating a clean C++20 input method engine, smooth uinput daemon handling, and seamless Fcitx5 integration laid the foundation that made Nilüfer possible. For complete credits, see [`CREDITS`](CREDITS).
+
+Also acknowledged:
+- [bamboo-core](https://github.com/BambooEngine/bamboo-core) — Original Go engine (Luong Thanh Lam, MIT).
+- [VMK](https://github.com/thanhpy2009/VMK) — Input method engine (Vo Ngo Hoang Thanh, GPL-3.0-or-later).
+- [fcitx5-bamboo](https://github.com/fcitx/fcitx5-bamboo) — Fcitx5 integration glue (CSSlayer, LGPL-2.1).
+
+---
+
 ## 📜 License
 
 Nilüfer is licensed under the [GNU General Public License v3.0 (GPL-3.0)](LICENSE).
+
