@@ -2,7 +2,7 @@
 
 # Code style rules
 
-This document is the single source of truth for the code rules of fcitx5-lotus. On conflict, this document wins.
+This document is the single source of truth for the code rules of Nilüfer (fcitx5-nilufer). On conflict, this document wins.
 
 ## 1. Format & lint (mandatory)
 

@@ -2,7 +2,7 @@
 
 # Quy tắc code style
 
-Tài liệu này là nguồn duy nhất cho quy tắc code của fcitx5-lotus. Khi có xung đột, tài liệu này thắng.
+Tài liệu này là nguồn duy nhất cho quy tắc code của Nilüfer (fcitx5-nilufer). Khi có xung đột, tài liệu này thắng.
 
 ## 1. Format & lint (bắt buộc)
 

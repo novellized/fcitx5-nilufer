@@ -1,8 +1,8 @@
 [English](CONTRIBUTING.md) | [Tiếng Việt](CONTRIBUTING_vi.md)
 
-# Contributing to fcitx5-lotus
+# Contributing to Nilüfer (fcitx5-nilufer)
 
-Thank you for your interest in contributing to the fcitx5-lotus project! This document guides you on how to participate in project development.
+Thank you for your interest in contributing to Nilüfer! This document guides you on how to participate in project development.
 
 ## 📋 Table of Contents
 
@@ -28,8 +28,8 @@ Thank you for your interest in contributing to the fcitx5-lotus project! This do
 
 ```bash
 # Clone repository
-git clone https://github.com/LotusInputMethod/fcitx5-lotus.git
-cd fcitx5-lotus
+git clone https://github.com/novellized/fcitx5-nilufer.git
+cd fcitx5-nilufer
 
 # Build
 mkdir build && cd build
@@ -44,9 +44,9 @@ make -j$(nproc)
 Fork this repository on GitHub and clone your fork to your machine.
 
 ```bash
-git clone https://github.com/yourusername/fcitx5-lotus.git
-cd fcitx5-lotus
-git remote add upstream https://github.com/LotusInputMethod/fcitx5-lotus.git
+git clone https://github.com/yourusername/fcitx5-nilufer.git
+cd fcitx5-nilufer
+git remote add upstream https://github.com/novellized/fcitx5-nilufer.git
 ```
 
 ### 2. Create a new branch
@@ -192,7 +192,7 @@ feature/*, fix/*, hotfix/*  ← Personal branch for each PR
 
 When reporting a bug, please provide:
 
-- fcitx5-lotus version
+- Nilüfer version
 - Operating system and version
 - Steps to reproduce the bug
 - Log or screenshot (if any) (Log via `fcitx5-diagnose` command)

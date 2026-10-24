@@ -1,8 +1,8 @@
 [English](CONTRIBUTING.md) | [Tiếng Việt](CONTRIBUTING_vi.md)
 
-# Đóng góp cho fcitx5-lotus
+# Đóng góp cho Nilüfer (fcitx5-nilufer)
 
-Cảm ơn bạn quan tâm đến việc đóng góp cho dự án fcitx5-lotus! Tài liệu này hướng dẫn bạn cách tham gia phát triển dự án.
+Cảm ơn bạn quan tâm đến việc đóng góp cho dự án Nilüfer! Tài liệu này hướng dẫn bạn cách tham gia phát triển dự án.
 
 ## 📋 Mục lục
 
@@ -28,8 +28,8 @@ Cảm ơn bạn quan tâm đến việc đóng góp cho dự án fcitx5-lotus! T
 
 ```bash
 # Clone repository
-git clone https://github.com/LotusInputMethod/fcitx5-lotus.git
-cd fcitx5-lotus
+git clone https://github.com/novellized/fcitx5-nilufer.git
+cd fcitx5-nilufer
 
 # Build
 mkdir build && cd build
@@ -44,9 +44,9 @@ make -j$(nproc)
 Fork repository này trên GitHub và clone fork của bạn về máy.
 
 ```bash
-git clone https://github.com/yourusername/fcitx5-lotus.git
-cd fcitx5-lotus
-git remote add upstream https://github.com/LotusInputMethod/fcitx5-lotus.git
+git clone https://github.com/yourusername/fcitx5-nilufer.git
+cd fcitx5-nilufer
+git remote add upstream https://github.com/novellized/fcitx5-nilufer.git
 ```
 
 ### 2. Tạo nhánh mới
@@ -192,7 +192,7 @@ feature/*, fix/*, hotfix/*  ← Nhánh cá nhân cho mỗi PR
 
 Khi báo cáo lỗi, vui lòng cung cấp:
 
-- Phiên bản fcitx5-lotus
+- Phiên bản Nilüfer
 - Hệ điều hành và phiên bản
 - Các bước để tái hiện lỗi
 - Log hoặc screenshot (nếu có) (Log bằng lệnh fcitx5-diagnose)
