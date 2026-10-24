@@ -47,7 +47,7 @@ int main() {
     fcitx::InputContextEvent focus(context.get(), fcitx::EventType::InputContextFocusIn);
     engine.activate(entry, focus);
 
-    if (!send(engine, entry, *context, FcitxKey_a, false) || !send(engine, entry, *context, FcitxKey_s, true))
+    if (!send(engine, entry, *context, FcitxKey_c, false) || !send(engine, entry, *context, FcitxKey_w, true))
         return 1;
 
     KbMsg msg{};
@@ -73,12 +73,12 @@ int main() {
     }
     if (!send(engine, entry, *context, FcitxKey_Pause, true))
         return 1;
-    const std::vector<std::string> expected{"á"};
+    const std::vector<std::string> expected{"ç"};
     if (context->commits() != expected) {
         std::string actual = "commits=";
         for (const auto& commit : context->commits())
             actual += "['" + commit + "']";
-        reportFailure("commit on the anchor", "commits=['á']", actual, "the anchor echo did not finish the replacement");
+        reportFailure("commit on the anchor", "commits=['ç']", actual, "the anchor echo did not finish the replacement");
         return 1;
     }
 

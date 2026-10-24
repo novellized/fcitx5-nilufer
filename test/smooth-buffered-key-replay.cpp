@@ -61,17 +61,17 @@ int main() {
     engine.activate(entry, focus);
     context->resetPreeditUpdateCount();
 
-    // Telex a, s changes the real Bamboo preedit a -> á. Smooth mode replaces
+    // Turkish Telex c, w changes preedit c -> ç. Smooth mode replaces
     // the old character through the kbSocket transport.
-    if (!send(engine, entry, *context, FcitxKey_a, false) || !send(engine, entry, *context, FcitxKey_s, true))
+    if (!send(engine, entry, *context, FcitxKey_c, false) || !send(engine, entry, *context, FcitxKey_w, true))
         return 1;
     size_t backspaces = 0;
     if (!receiveBackspaceRequest(listener, backspaces, "the initial Telex replacement request did not arrive"))
         return 1;
 
-    if (!send(engine, entry, *context, FcitxKey_x, true) || !context->commits().empty()) {
-        reportFailure("buffer key x before deletion completes", "no immediate commits", "commits=" + std::to_string(context->commits().size()),
-                      "buffered key x was emitted before the first replacement completed");
+    if (!send(engine, entry, *context, FcitxKey_w, true) || !context->commits().empty()) {
+        reportFailure("buffer key w before deletion completes", "no immediate commits", "commits=" + std::to_string(context->commits().size()),
+                      "buffered key w was emitted before the first replacement completed");
         return 1;
     }
     for (size_t i = 0; i < backspaces; ++i) {
@@ -82,7 +82,7 @@ int main() {
         return 1;
 
     size_t replayBackspaces = 0;
-    if (!receiveBackspaceRequest(listener, replayBackspaces, "buffered key was not replayed after deletion", "buffered x replay starts another replacement request within 5000 ms"))
+    if (!receiveBackspaceRequest(listener, replayBackspaces, "buffered key was not replayed after deletion", "buffered w replay starts another replacement request within 5000 ms"))
         return 1;
     for (size_t i = 0; i < replayBackspaces; ++i) {
         if (!send(engine, entry, *context, FcitxKey_BackSpace, false))
@@ -91,7 +91,7 @@ int main() {
     if (!send(engine, entry, *context, FcitxKey_Pause, true))
         return 1;
 
-    const std::vector<std::string> expected{"á", "ã"};
+    const std::vector<std::string> expected{"ç", "cw"};
     if (context->commits() != expected) {
         std::string actual = "commits=";
         for (const auto& commit : context->commits())

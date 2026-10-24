@@ -59,33 +59,30 @@ namespace {
 int runConfigEnumNames() {
     fcitx::RawConfig   raw;
     fcitx::lotusConfig config;
-    raw.setValueByPath("OutputCharset", "TCVN3 (ABC)");
-    raw.setValueByPath("InputMethod", "VNI");
+    raw.setValueByPath("OutputCharset", "Unicode");
+    raw.setValueByPath("InputMethod", "Turkish Telex");
     config.load(raw, true);
 
-    check("legacy OutputCharset resolves", config.outputCharset.value() == fcitx::Charset::Tcvn3Abc);
-    check("legacy InputMethod resolves", config.inputMethod.value() == fcitx::InputMethodId::Vni);
+    check("OutputCharset resolves", config.outputCharset.value() == fcitx::Charset::Unicode);
+    check("InputMethod resolves", config.inputMethod.value() == fcitx::InputMethodId::TurkishTelex);
 
     std::string        savedText;
     fcitx::lotusConfig reloaded = roundTrip(config, savedText);
-    check("file keeps the legacy charset name", savedText.find("TCVN3 (ABC)") != std::string::npos);
-    check("file keeps the legacy input method name", savedText.find("VNI") != std::string::npos);
-    check("reloaded OutputCharset value", *reloaded.outputCharset == fcitx::Charset::Tcvn3Abc);
-    check("reloaded InputMethod value", *reloaded.inputMethod == fcitx::InputMethodId::Vni);
+    check("file keeps the charset name", savedText.find("Unicode") != std::string::npos);
+    check("file keeps the input method name", savedText.find("Turkish Telex") != std::string::npos);
+    check("reloaded OutputCharset value", *reloaded.outputCharset == fcitx::Charset::Unicode);
+    check("reloaded InputMethod value", *reloaded.inputMethod == fcitx::InputMethodId::TurkishTelex);
 
-    check("charset names",
-          fcitx::CharsetToString(fcitx::Charset::Unicode) == "Unicode" && fcitx::CharsetToString(fcitx::Charset::Tcvn3Abc) == "TCVN3 (ABC)" &&
-              fcitx::CharsetToString(fcitx::Charset::Windows1258) == "Windows 1258 codepage" && fcitx::CharsetToString(fcitx::Charset::UnicodeCombining) == "Unicode tổ hợp");
+    check("charset names", fcitx::CharsetToString(fcitx::Charset::Unicode) == "Unicode");
     check("input method names",
-          fcitx::InputMethodIdToString(fcitx::InputMethodId::Telex) == "Telex" && fcitx::InputMethodIdToString(fcitx::InputMethodId::VniFrench) == "VNI Bàn phím tiếng Pháp" &&
-              fcitx::InputMethodIdToString(fcitx::InputMethodId::Custom) == "Custom");
+          fcitx::InputMethodIdToString(fcitx::InputMethodId::TurkishTelex) == "Turkish Telex" &&
+          fcitx::InputMethodIdToString(fcitx::InputMethodId::Custom) == "Custom");
 
     constexpr std::array<std::string_view, lotus::kCharsetCount> kExpectedCharsets = {
-        "Unicode",        "BKHCM 1", "BKHCM 2", "NCR Decimal", "NCR Hex", "TCVN3 (ABC)",   "UTF-8",      "Unicode C string Decimal", "Unicode C string Hex",
-        "Unicode tổ hợp", "VIQR",    "VISCII",  "VNI Windows", "VPS",     "Vietware Full", "Vietware X", "Windows 1258 codepage",
+        "Unicode",
     };
     constexpr std::array<std::string_view, lotus::kInputMethodCount> kExpectedInputMethods = {
-        "Telex", "VNI", "Telex + VNI", "Telex + VNI + VIQR", "VIQR", "Microsoft layout", "VNI Bàn phím tiếng Pháp", "Custom",
+        "Turkish Telex", "Custom",
     };
     for (std::size_t i = 0; i < kExpectedCharsets.size(); ++i) {
         check("charset config name", fcitx::CharsetToString(static_cast<fcitx::Charset>(i)) == kExpectedCharsets.at(i));
@@ -98,7 +95,7 @@ int runConfigEnumNames() {
     config.inputMethod.dumpDescription(description);
     const std::string* launchSubConfig = description.valueByPath("LaunchSubConfig");
     check("custom keymap keeps its sub-config", launchSubConfig != nullptr && *launchSubConfig == "True");
-    const std::string* lastName = description.valueByPath("Enum/7");
+    const std::string* lastName = description.valueByPath("Enum/1");
     check("input method list has Custom last", lastName != nullptr && *lastName == "Custom");
     check("enum names are not translated", description.valueByPath("EnumI18n/0") == nullptr);
 

@@ -1,78 +1,93 @@
-/*
- * SPDX-FileCopyrightText: 2018 Luong Thanh Lam <ltlam93@gmail.com>
- * SPDX-FileCopyrightText: 2026 Nguyen Hoang Ky <nhktmdzhg@gmail.com>
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
-/**
- * @file case_map.cpp
- * @brief Implementation of the Unicode case helpers.
- */
 #include "case_map.h"
 
-#include "data/case_data.h"
-
-#include <algorithm>
-#include <utility>
-
 namespace lotus::case_map {
-    constexpr char32_t kAsciiLimit = 128;
-
-    char32_t           lookupCase(const std::vector<std::pair<char32_t, char32_t>>& table, char32_t key) {
-        const auto it = std::ranges::lower_bound(table, key, std::less{}, [](const std::pair<char32_t, char32_t>& entry) { return entry.first; });
-        return (it != table.end() && it->first == key) ? it->second : key;
-    }
 
     char32_t toLower(char32_t codePoint) {
-        if (codePoint < kAsciiLimit) {
-            if (U'A' <= codePoint && codePoint <= U'Z') {
-                return codePoint + (U'a' - U'A');
+        if (codePoint >= U'A' && codePoint <= U'Z') {
+            if (codePoint == U'I') {
+                return U'ı'; // Turkish dotless I -> ı
             }
-            return codePoint;
+            return codePoint - U'A' + U'a';
         }
-        return lookupCase(data::upperLowerPairs(), codePoint);
+        switch (codePoint) {
+            case U'Ç': return U'ç';
+            case U'Ş': return U'ş';
+            case U'Ğ': return U'ğ';
+            case U'Ü': return U'ü';
+            case U'Ö': return U'ö';
+            case U'İ': return U'i'; // Turkish capital I with dot -> i
+            default:   return codePoint;
+        }
     }
 
     char32_t toUpper(char32_t codePoint) {
-        if (codePoint < kAsciiLimit) {
-            if (U'a' <= codePoint && codePoint <= U'z') {
-                return codePoint - (U'a' - U'A');
+        if (codePoint >= U'a' && codePoint <= U'z') {
+            if (codePoint == U'i') {
+                return U'İ'; // Turkish dotted i -> İ
             }
-            return codePoint;
+            return codePoint - U'a' + U'A';
         }
-        return lookupCase(data::lowerUpperPairs(), codePoint);
+        switch (codePoint) {
+            case U'ç': return U'Ç';
+            case U'ş': return U'Ş';
+            case U'ğ': return U'Ğ';
+            case U'ü': return U'Ü';
+            case U'ö': return U'Ö';
+            case U'ı': return U'I'; // Turkish dotless ı -> I
+            default:   return codePoint;
+        }
     }
 
     bool isUpper(char32_t codePoint) {
-        return toLower(codePoint) != codePoint;
+        if (codePoint >= U'A' && codePoint <= U'Z') return true;
+        switch (codePoint) {
+            case U'Ç':
+            case U'Ş':
+            case U'Ğ':
+            case U'Ü':
+            case U'Ö':
+            case U'İ':
+                return true;
+            default:
+                return false;
+        }
     }
 
     bool isLower(char32_t codePoint) {
-        return toUpper(codePoint) != codePoint;
+        if (codePoint >= U'a' && codePoint <= U'z') return true;
+        switch (codePoint) {
+            case U'ç':
+            case U'ş':
+            case U'ğ':
+            case U'ü':
+            case U'ö':
+            case U'ı':
+                return true;
+            default:
+                return false;
+        }
     }
 
     bool isLetter(char32_t codePoint) {
-        if (codePoint < kAsciiLimit) {
-            return (U'a' <= codePoint && codePoint <= U'z') || (U'A' <= codePoint && codePoint <= U'Z');
-        }
-        const std::u32string_view letters = data::letters();
-        return std::ranges::binary_search(letters, codePoint);
+        return isUpper(codePoint) || isLower(codePoint);
     }
 
     std::u32string toLower(std::u32string_view text) {
-        std::u32string out(text);
-        for (char32_t& codePoint : out) {
-            codePoint = toLower(codePoint);
+        std::u32string result;
+        result.reserve(text.size());
+        for (char32_t ch : text) {
+            result.push_back(toLower(ch));
         }
-        return out;
+        return result;
     }
 
     std::u32string toUpper(std::u32string_view text) {
-        std::u32string out(text);
-        for (char32_t& codePoint : out) {
-            codePoint = toUpper(codePoint);
+        std::u32string result;
+        result.reserve(text.size());
+        for (char32_t ch : text) {
+            result.push_back(toUpper(ch));
         }
-        return out;
+        return result;
     }
 
 } // namespace lotus::case_map

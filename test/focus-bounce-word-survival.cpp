@@ -111,12 +111,12 @@ int main() {
     if (!completeReplacement(engine, entry, *context, listener, "a focus bounce must not drop the composed word: typing after it still needs the replacement request"))
         return 1;
 
-    const std::vector<std::string> expected{"ư"};
+    const std::vector<std::string> expected{"ü"};
     if (context->commits() != expected) {
         std::string actual = "commits=";
         for (const auto& commit : context->commits())
             actual += "['" + commit + "']";
-        reportFailure("verify commit after a bounce", "commits=['ư']", actual, "the bounced word was replaced from scratch instead of keeping 'tu'");
+        reportFailure("verify commit after a bounce", "commits=['ü']", actual, "the bounced word was replaced from scratch instead of keeping 'tu'");
         return 1;
     }
 
@@ -125,13 +125,13 @@ int main() {
     // stays pending until A is re-entered, which is the true handoff.
     loseFocus(engine, entry, *context);
     std::this_thread::sleep_for(std::chrono::milliseconds(150));
-    // Two-context isolation: a second ibus context composes 'a' + 's' independently; nothing may
+    // Two-context isolation: a second ibus context composes 'c' + 'w' independently; nothing may
     // leak across contexts and contextA must still hold only the bounced word.
     auto contextB = std::make_unique<TestInputContext>(&testInstance.instance);
     contextB->setFrontendName("ibus");
     gainFocus(engine, entry, *contextB);
 
-    if (!send(engine, entry, *contextB, FcitxKey_a, false) || !send(engine, entry, *contextB, FcitxKey_s, true))
+    if (!send(engine, entry, *contextB, FcitxKey_c, false) || !send(engine, entry, *contextB, FcitxKey_w, true))
         return 1;
     if (!completeReplacement(engine, entry, *contextB, listener, "a second context must replace its own word independently"))
         return 1;
@@ -140,33 +140,33 @@ int main() {
         std::string actual = "commits=";
         for (const auto& commit : context->commits())
             actual += "['" + commit + "']";
-        reportFailure("cross-context isolation", "contextA commits=['ư']", actual, "typing on contextB leaked into contextA");
+        reportFailure("cross-context isolation", "contextA commits=['ü']", actual, "typing on contextB leaked into contextA");
         return 1;
     }
-    const std::vector<std::string> expectedB{"á"};
+    const std::vector<std::string> expectedB{"ç"};
     if (contextB->commits() != expectedB) {
         std::string actual = "commits=";
         for (const auto& commit : contextB->commits())
             actual += "['" + commit + "']";
-        reportFailure("independent word on contextB", "contextB commits=['á']", actual, "contextB must compose its own word without contextA state");
+        reportFailure("independent word on contextB", "contextB commits=['ç']", actual, "contextB must compose its own word without contextA state");
         return 1;
     }
     // Return B -> A: A's deferred reset flushes on re-entry (elapsed >100ms), so the next
     // word on A starts from scratch.
     loseFocus(engine, entry, *contextB);
     gainFocus(engine, entry, *context);
-    // Same-context fresh word after the real move: 'a' + 's' must replace only that fresh word.
-    if (!send(engine, entry, *context, FcitxKey_a, false) || !send(engine, entry, *context, FcitxKey_s, true))
+    // Same-context fresh word after the real move: 'c' + 'w' must replace only that fresh word.
+    if (!send(engine, entry, *context, FcitxKey_c, false) || !send(engine, entry, *context, FcitxKey_w, true))
         return 1;
     if (!completeReplacement(engine, entry, *context, listener, "the word after a real focus move must be replaced from scratch"))
         return 1;
 
-    const std::vector<std::string> expectedAfterMove{"ư", "á"};
+    const std::vector<std::string> expectedAfterMove{"ü", "ç"};
     if (context->commits() != expectedAfterMove) {
         std::string actual = "commits=";
         for (const auto& commit : context->commits())
             actual += "['" + commit + "']";
-        reportFailure("next word after a real focus move", "commits=['ư']['á']", actual, "a real focus move must still drop the word buffer");
+        reportFailure("next word after a real focus move", "commits=['ü']['ç']", actual, "a real focus move must still drop the word buffer");
         return 1;
     }
 

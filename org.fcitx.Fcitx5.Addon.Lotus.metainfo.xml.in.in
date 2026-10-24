@@ -4,16 +4,15 @@
   <extends>org.fcitx.Fcitx5</extends>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
-  <name>Lotus</name>
-  <summary>Vietnamese input method (Lotus)</summary>
+  <name>Nilüfer</name>
+  <summary>Turkish input method (Nilüfer)</summary>
   <description>
-    <p>Lotus is a Vietnamese input method for Fcitx5, supporting multiple typing modes and input
-      methods.</p>
+    <p>Nilüfer is a Turkish Telex input method for Fcitx5.</p>
   </description>
   <url type="homepage">https://fcitx-im.org</url>
   <url type="bugtracker">https://github.com/LotusInputMethod/fcitx5-lotus/issues</url>
   <project_group>Fcitx</project_group>
   <releases>
-    <release version="@PROJECT_VERSION@" date="2026-02-26" />
+    <release version="@PROJECT_VERSION@" date="2026-10-24" />
   </releases>
 </component>

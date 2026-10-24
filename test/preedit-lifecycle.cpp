@@ -67,26 +67,26 @@ int main() {
     engine.activate(entry, in);
     context->resetPreeditUpdateCount();
 
-    // Step 3: Type Telex keys 'a' followed by 's' -> should compose Vietnamese character "á"
-    for (auto sym : {FcitxKey_a, FcitxKey_s}) {
+    // Step 3: Type Telex keys 'c' followed by 'w' -> should compose Turkish character "ç"
+    for (auto sym : {FcitxKey_c, FcitxKey_w}) {
         fcitx::KeyEvent event(context.get(), fcitx::Key(sym), false);
         engine.keyEvent(entry, event);
         if (!event.accepted()) {
-            reportFailure("type Telex key", "key event accepted", "key " + std::to_string(sym) + " was not accepted", "Lotus did not process the Telex input");
+            reportFailure("type Telex key", "key event accepted", "key " + std::to_string(sym) + " was not accepted", "Nilufer did not process the Telex input");
             return 1;
         }
     }
 
     // Step 4: Verify client preedit state during active composition
-    // - Client preedit must hold "á" (valid UTF-8, 2 bytes, cursor at end).
+    // - Client preedit must hold "ç" (valid UTF-8, 2 bytes, cursor at end).
     // - Server preedit (candidate window) must be empty.
     // - Commits must be 0 (composition is still active, not yet committed).
-    // - updatePreedit() must have been called twice (once for 'a', once for 's').
+    // - updatePreedit() must have been called twice (once for 'c', once for 'w').
     const auto& clientPreedit = context->inputPanel().clientPreedit();
     const auto& serverPreedit = context->inputPanel().preedit();
-    if (clientPreedit.toString() != "á" || !fcitx::utf8::validate(clientPreedit.toString()) || clientPreedit.cursor() != 2 || !context->commits().empty() ||
+    if (clientPreedit.toString() != "ç" || !fcitx::utf8::validate(clientPreedit.toString()) || clientPreedit.cursor() != 2 || !context->commits().empty() ||
         !serverPreedit.toString().empty() || context->preeditUpdates() != 2) {
-        reportFailure("type a then s in Preedit/Telex", "client preedit=á (valid UTF-8, cursor=2), server preedit empty, commits=0, updatePreedit count=2",
+        reportFailure("type c then w in Preedit/Telex", "client preedit=ç (valid UTF-8, cursor=2), server preedit empty, commits=0, updatePreedit count=2",
                       "client preedit=" + clientPreedit.toString() + ", cursor=" + std::to_string(clientPreedit.cursor()) + ", server preedit=" + serverPreedit.toString() +
                           ", commits=" + std::to_string(context->commits().size()) + ", updatePreedit count=" + std::to_string(context->preeditUpdates()),
                       "Preedit mode must expose the composed Telex result through client preedit without committing it");
@@ -94,11 +94,11 @@ int main() {
     }
 
     // Step 5: Emulate FocusOut (user switches windows or clicks outside)
-    // - Active preedit "á" must be committed to the client application exactly once.
-    const std::vector<std::string> expectedCommits{"á"};
+    // - Active preedit "ç" must be committed to the client application exactly once.
+    const std::vector<std::string> expectedCommits{"ç"};
     context->focusOut();
     if (context->commits() != expectedCommits) {
-        reportFailure("focus out with active client preedit", "commits=[á]",
+        reportFailure("focus out with active client preedit", "commits=[ç]",
                       "commit count=" + std::to_string(context->commits().size()) + (context->commits().empty() ? "" : ", first commit=" + context->commits().front()),
                       "Fcitx must commit the active client preedit exactly once when the client does not handle unfocus commits");
         return 1;
@@ -122,7 +122,7 @@ int main() {
     fcitx::InputContextEvent reactivate(context.get(), fcitx::EventType::InputContextFocusIn);
     engine.activate(entry, reactivate);
     if (!context->inputPanel().clientPreedit().toString().empty() || context->commits() != expectedCommits) {
-        reportFailure("reactivate after focus out", "client preedit empty, commits=[á]",
+        reportFailure("reactivate after focus out", "client preedit empty, commits=[ç]",
                       "client preedit=" + context->inputPanel().clientPreedit().toString() + ", commit count=" + std::to_string(context->commits().size()),
                       "reactivation must preserve the cleared preedit without committing stale text");
         return 1;

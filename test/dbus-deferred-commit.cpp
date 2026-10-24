@@ -64,7 +64,7 @@ namespace {
         engine.activate(entry, focus);
         context->resetPreeditUpdateCount();
 
-        if (!send(engine, entry, *context, FcitxKey_a, false) || !send(engine, entry, *context, FcitxKey_s, true))
+        if (!send(engine, entry, *context, FcitxKey_c, false) || !send(engine, entry, *context, FcitxKey_w, true))
             return nullptr;
         size_t backspaces = 0;
         if (!receiveBackspaceRequest(listener, backspaces, "the Telex replacement request did not arrive"))
@@ -107,7 +107,7 @@ int main() {
         return 1;
     }
     pumpEventLoop(testInstance);
-    const std::vector<std::string> expected{"á"};
+    const std::vector<std::string> expected{"ç"};
     if (dbusContext->commits() != expected) {
         reportFailure("deferred commit delivered", "one commit of the replaced word", "commits=" + std::to_string(dbusContext->commits().size()),
                       "the deferred commit must reach the client after the key event");

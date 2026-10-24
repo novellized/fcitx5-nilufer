@@ -75,17 +75,17 @@ int main() {
     engine.activate(entry, focus);
     context->resetPreeditUpdateCount();
 
-    // Telex a, s changes the Bamboo preedit a -> á. Select mode must ask the
+    // Turkish Telex c, w changes preedit c -> ç. Select mode must ask the
     // uinput server to select the old character(s) instead of sending backspaces.
-    if (!send(engine, entry, *context, FcitxKey_a, false) || !send(engine, entry, *context, FcitxKey_s, true))
+    if (!send(engine, entry, *context, FcitxKey_c, false) || !send(engine, entry, *context, FcitxKey_w, true))
         return 1;
     size_t selects = 0;
     if (!receiveSelectRequest(listener, selects, "the initial Telex replacement did not request a selection"))
         return 1;
 
     // A key typed while the selection is in flight must not commit immediately.
-    if (!send(engine, entry, *context, FcitxKey_x, true) || !context->commits().empty()) {
-        reportFailure("buffer key x before the selection completes", "no immediate commits", commitList(*context), "buffered key x was emitted before the selection completed");
+    if (!send(engine, entry, *context, FcitxKey_w, true) || !context->commits().empty()) {
+        reportFailure("buffer key w before the selection completes", "no immediate commits", commitList(*context), "buffered key w was emitted before the selection completed");
         return 1;
     }
 
@@ -99,19 +99,19 @@ int main() {
         return 1;
     if (!send(engine, entry, *context, FcitxKey_Pause, true))
         return 1;
-    const std::vector<std::string> afterFirst{"á"};
+    const std::vector<std::string> afterFirst{"ç"};
     if (context->commits() != afterFirst) {
-        reportFailure("verify commit after the last left arrow", "commits=['á']", commitList(*context) + ", selects=" + std::to_string(selects),
+        reportFailure("verify commit after the last left arrow", "commits=['ç']", commitList(*context) + ", selects=" + std::to_string(selects),
                       "the replacement was not committed exactly once when the selection completed");
         return 1;
     }
 
-    // The buffered x is replayed after the commit and starts a second selection.
+    // The buffered w is replayed after the commit and starts a second selection.
     // No left arrow is replayed: only one new request arrives and it matches the
     // count the replacement needs.
     size_t replaySelects = 0;
     if (!receiveSelectRequest(listener, replaySelects, "buffered key was not replayed after the selection completed",
-                              "buffered x replay starts another selection request within 5000 ms"))
+                              "buffered w replay starts another selection request within 5000 ms"))
         return 1;
     for (size_t i = 0; i < replaySelects; ++i) {
         if (!send(engine, entry, *context, FcitxKey_Left, false))
@@ -122,9 +122,9 @@ int main() {
     if (!send(engine, entry, *context, FcitxKey_Pause, true))
         return 1;
 
-    const std::vector<std::string> expected{"á", "ã"};
+    const std::vector<std::string> expected{"ç", "cw"};
     if (context->commits() != expected) {
-        reportFailure("verify final replay commits", "commits=['á']['ã']",
+        reportFailure("verify final replay commits", "commits=['ç']['cw']",
                       commitList(*context) + ", first-selects=" + std::to_string(selects) + ", replay-selects=" + std::to_string(replaySelects),
                       "the buffered key replay did not produce the expected final commits, or a left arrow was replayed");
         return 1;

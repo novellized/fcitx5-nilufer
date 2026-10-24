@@ -1,6 +1,6 @@
 [InputMethod]
-Name=Lotus
+Name=Nilüfer
 Icon=fcitx-lotus
-LangCode=vi
+LangCode=tr
 Addon=lotus
 Configurable=True

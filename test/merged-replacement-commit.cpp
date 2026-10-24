@@ -54,8 +54,8 @@ namespace {
         loop.exec();
     }
 
-    // Telex "oo" -> "ô" starts a replacement, "i" is typed while the deletion runs and gets buffered,
-    // so finishing the replacement replays it and its text lands in the same batch as the "ô".
+    // Turkish Telex "ow" -> "ö" starts a replacement, "i" is typed while the deletion runs and gets buffered,
+    // so finishing the replacement replays it and its text lands in the same batch as the "ö".
     std::unique_ptr<TestInputContext> runReplacementWithBufferedKey(TestInstance& testInstance, fcitx::LotusEngine& engine, KbSocketListener& listener, const char* frontendName) {
         auto context = std::make_unique<TestInputContext>(&testInstance.instance);
         context->setFrontendName(frontendName);
@@ -65,7 +65,7 @@ namespace {
         engine.activate(entry, focus);
         context->resetPreeditUpdateCount();
 
-        if (!send(engine, entry, *context, FcitxKey_o, false) || !send(engine, entry, *context, FcitxKey_o, true))
+        if (!send(engine, entry, *context, FcitxKey_o, false) || !send(engine, entry, *context, FcitxKey_w, true))
             return nullptr;
         size_t backspaces = 0;
         if (!receiveBackspaceRequest(listener, backspaces, "the Telex replacement request did not arrive"))
@@ -103,7 +103,7 @@ int main() {
     if (!listener.valid())
         return 1;
 
-    const std::vector<std::string> expected{"ôi"};
+    const std::vector<std::string> expected{"öi"};
 
     // Phase A: the ibus frontend (gnome-shell, text-input-v3) receives the replaced word and the
     // replayed key as a single commit.

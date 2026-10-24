@@ -25,8 +25,8 @@ int main() {
     engine.activate(entry, focus);
     context->resetPreeditUpdateCount();
 
-    // Bamboo Telex processes a then s as U+00E1 LATIN SMALL LETTER A WITH ACUTE.
-    for (auto sym : {FcitxKey_a, FcitxKey_s}) {
+    // Turkish Telex processes c then w as U+00E7 LATIN SMALL LETTER C WITH CEDILLA.
+    for (auto sym : {FcitxKey_c, FcitxKey_w}) {
         fcitx::KeyEvent event(context.get(), fcitx::Key(sym), false);
         engine.keyEvent(entry, event);
         if (!event.accepted()) {
@@ -35,7 +35,7 @@ int main() {
         }
     }
     const auto& preedit = context->inputPanel().clientPreedit();
-    if (preedit.toString() != "á" || !fcitx::utf8::validate(preedit.toString()) || preedit.cursor() != 2 || context->preeditUpdates() != 2 || !context->commits().empty() ||
+    if (preedit.toString() != "ç" || !fcitx::utf8::validate(preedit.toString()) || preedit.cursor() != 2 || context->preeditUpdates() != 2 || !context->commits().empty() ||
         !context->inputPanel().preedit().toString().empty()) {
         std::cerr << "client='" << preedit.toString() << "' server='" << context->inputPanel().preedit().toString() << "' cursor=" << preedit.cursor()
                   << " updates=" << context->preeditUpdates() << " commits=" << context->commits().size() << '\n';

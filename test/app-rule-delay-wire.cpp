@@ -75,7 +75,7 @@ int main() {
     engine.activate(entry, focus);
     context->resetPreeditUpdateCount();
 
-    if (!send(engine, entry, *context, FcitxKey_a, false) || !send(engine, entry, *context, FcitxKey_s, true))
+    if (!send(engine, entry, *context, FcitxKey_c, false) || !send(engine, entry, *context, FcitxKey_w, true))
         return 1;
 
     KbMsg msg{};

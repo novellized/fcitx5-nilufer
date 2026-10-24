@@ -71,14 +71,13 @@ namespace fcitx {
      * @brief Output charsets, shared with the engine (lotus::data::Charset).
      */
     using lotus::Charset;
-    FCITX_CONFIG_ENUM_NAME(Charset, "Unicode", "BKHCM 1", "BKHCM 2", "NCR Decimal", "NCR Hex", "TCVN3 (ABC)", "UTF-8", "Unicode C string Decimal", "Unicode C string Hex",
-                           "Unicode tổ hợp", "VIQR", "VISCII", "VNI Windows", "VPS", "Vietware Full", "Vietware X", "Windows 1258 codepage");
+    FCITX_CONFIG_ENUM_NAME(Charset, "Unicode");
 
     /**
      * @brief Input methods, shared with the engine (lotus::data::InputMethodId).
      */
     using lotus::InputMethodId;
-    FCITX_CONFIG_ENUM_NAME(InputMethodId, "Telex", "VNI", "Telex + VNI", "Telex + VNI + VIQR", "VIQR", "Microsoft layout", "VNI Bàn phím tiếng Pháp", "Custom");
+    FCITX_CONFIG_ENUM_NAME(InputMethodId, "Turkish Telex", "Custom");
 
     /**
      * @brief Annotation for string list options in configuration UI.
@@ -173,7 +172,7 @@ namespace fcitx {
         lotusConfig,
 
         OptionWithAnnotation<LotusMode, LotusModeI18NAnnotation>   mode{this, "Mode", _("Mode"), LotusMode::Preedit};
-        OptionWithAnnotation<InputMethodId, InputMethodAnnotation> inputMethod{this, "InputMethod", _("Input Method"), InputMethodId::Telex};
+        OptionWithAnnotation<InputMethodId, InputMethodAnnotation> inputMethod{this, "InputMethod", _("Input Method"), InputMethodId::TurkishTelex};
         OptionWithAnnotation<Charset, EnumAnnotation> outputCharset{this, "OutputCharset", _("Output Charset"), Charset::Unicode}; KeyListOption modeMenuKey{
             this, "ModeMenuKey", _("Mode Menu Hotkey"), {Key("grave")}, KeyListConstrain({KeyConstrainFlag::AllowModifierLess, KeyConstrainFlag::AllowModifierOnly})};
         KeyListOption cycleModeKey{this, "CycleModeKey", _("Cycle Mode Hotkey"), {}, KeyListConstrain({KeyConstrainFlag::AllowModifierLess, KeyConstrainFlag::AllowModifierOnly})};
