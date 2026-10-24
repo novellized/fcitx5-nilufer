@@ -1,30 +1,30 @@
-[English](CONTRIBUTING.en.md) | [Tiếng Việt](CONTRIBUTING.md)
+[English](CONTRIBUTING.md) | [Tiếng Việt](CONTRIBUTING_vi.md)
 
-# Đóng góp cho fcitx5-lotus
+# Contributing to fcitx5-lotus
 
-Cảm ơn bạn quan tâm đến việc đóng góp cho dự án fcitx5-lotus! Tài liệu này hướng dẫn bạn cách tham gia phát triển dự án.
+Thank you for your interest in contributing to the fcitx5-lotus project! This document guides you on how to participate in project development.
 
-## 📋 Mục lục
+## 📋 Table of Contents
 
-- [Bắt đầu](#bắt-đầu)
-- [Quy trình đóng góp](#quy-trình-đóng-góp)
-- [Quy tắc ứng xử](#quy-tắc-ứng-xử)
-- [Quy tắc code style](#quy-tắc-code-style)
-- [Quy trình Pull Request](#quy-trình-pull-request)
-- [Lưu ý quan trọng về nhánh](#lưu-ý-quan-trọng-về-nhánh)
-- [Báo cáo lỗi](#báo-cáo-lỗi)
-- [Đề xuất tính năng](#đề-xuất-tính-năng)
+- [Getting Started](#getting-started)
+- [Contribution Workflow](#contribution-workflow)
+- [Code of Conduct](#code-of-conduct)
+- [Code Style Rules](#code-style-rules)
+- [Pull Request Process](#pull-request-process)
+- [Important Notes on Branching](#important-notes-on-branching)
+- [Bug Reporting](#bug-reporting)
+- [Feature Requests](#feature-requests)
 
-## Bắt đầu
+## Getting Started
 
-### Yêu cầu hệ thống
+### System Requirements
 
-- GCC hoặc Clang với hỗ trợ C++20
+- GCC or Clang with C++20 support
 - CMake >= 3.16
 - Fcitx5 development headers
 - Git
 
-### Cài đặt và build
+### Installation and Build
 
 ```bash
 # Clone repository
@@ -37,11 +37,11 @@ cmake ..
 make -j$(nproc)
 ```
 
-## Quy trình đóng góp
+## Contribution Workflow
 
 ### 1. Fork repository
 
-Fork repository này trên GitHub và clone fork của bạn về máy.
+Fork this repository on GitHub and clone your fork to your machine.
 
 ```bash
 git clone https://github.com/yourusername/fcitx5-lotus.git
@@ -49,27 +49,27 @@ cd fcitx5-lotus
 git remote add upstream https://github.com/LotusInputMethod/fcitx5-lotus.git
 ```
 
-### 2. Tạo nhánh mới
+### 2. Create a new branch
 
-Luôn tạo nhánh mới cho mỗi tính năng hoặc sửa lỗi:
+Always create a new branch for each feature or bug fix:
 
 ```bash
 git checkout dev
 git pull upstream dev
-git checkout -b feature/ten-tinh-nang
-# hoặc
-git checkout -b fix/ten-loi
+git checkout -b feature/feature-name
+# or
+git checkout -b fix/bug-name
 ```
 
-### 3. Thực hiện thay đổi
+### 3. Make changes
 
-- Viết code sạch, dễ đọc
-- Tuân thủ quy tắc code style (xem bên dưới)
-- Cập nhật tài liệu nếu cần
+- Write clean, readable code
+- Follow code style rules (see below)
+- Update documentation if needed
 
 ### 4. Commit changes
 
-Sử dụng commit messages rõ ràng và mô tả:
+Use clear and descriptive commit messages:
 
 ```
 feat: add emoji support
@@ -78,17 +78,17 @@ feat: add emoji support
 - Update generate_emoji_header.py
 ```
 
-## Quy tắc ứng xử
+## Code of Conduct
 
-Mọi thành viên tham gia đóng góp cho dự án này đều phải tuân thủ [Quy tắc Ứng xử cho Cộng tác viên](CODE_OF_CONDUCT.md) để xây dựng một cộng đồng cởi mở, thân thiện và lành mạnh.
+All members contributing to this project must adhere to the [Contributor Code of Conduct](CODE_OF_CONDUCT.en.md) to build an open, friendly, and healthy community.
 
-## Quy tắc code style
+## Code Style Rules
 
-Toàn bộ quy tắc nằm ở [CODE_STYLE.md](CODE_STYLE.md) — đó là nguồn duy nhất.
+All rules live in [CODE_STYLE.en.md](CODE_STYLE.en.md) — that is the single source of truth.
 
-- **C/C++**: `.clang-format` + `.clang-tidy`, chuẩn C++20.
-- **Python (`settings-gui`)**: `ruff check` và `ruff format` (cấu hình ở `pyproject.toml`).
-- Khuyến khích tạo git hook `pre-commit` để tự động format code trước khi commit bằng cách tạo file `.git/hooks/pre-commit` với nội dung:
+- **C/C++**: `.clang-format` + `.clang-tidy`, C++20.
+- **Python (`settings-gui`)**: `ruff check` and `ruff format` (configuration in `pyproject.toml`).
+- Encouraged to create a `pre-commit` hook to automatically format code before commit by creating `.git/hooks/pre-commit` with the following content:
 
 ```bash
 #!/bin/bash
@@ -97,7 +97,7 @@ CPP_FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(cpp|h
 if [ -n "$CPP_FILES" ]; then
     for file in $CPP_FILES; do
         clang-format -i "$file"
-        git add "$file" 
+        git add "$file"
     done
 fi
 
@@ -112,13 +112,13 @@ if [ -n "$PY_FILES" ]; then
 fi
 ```
 
-Sau đó chạy lệnh: `chmod +x .git/hooks/pre-commit`
+Then run the command: `chmod +x .git/hooks/pre-commit`
 
-## Quy trình Pull Request
+## Pull Request Process
 
-**Mỗi PR chỉ giải quyết một vấn đề.** Nếu bạn sửa nhiều vấn đề, hãy tách thành nhiều PR.
+**Each PR solves exactly one problem.** If you change several things, split them into several PRs.
 
-### 1. Đảm bảo code sạch bằng `clang-format` và `ruff`
+### 1. Ensure clean code with `clang-format` and `ruff`
 
 ```bash
 # C/C++
@@ -129,7 +129,7 @@ ruff check --fix settings-gui
 ruff format settings-gui
 ```
 
-### 2. Chạy test
+### 2. Run tests
 
 ```bash
 # Build C++ code
@@ -137,80 +137,80 @@ cd build
 cmake .. && make
 ```
 
-### 3. Rebase với nhánh dev
+### 3. Rebase with the dev branch
 
 ```bash
 git checkout dev
 git pull upstream dev
-git checkout feature/ten-tinh-nang
+git checkout feature/feature-name
 git rebase dev
 ```
 
-### 4. Push và tạo PR
+### 4. Push and create PR
 
 ```bash
-git push origin feature/ten-tinh-nang
+git push origin feature/feature-name
 ```
 
-Tạo Pull Request trên GitHub với:
+Create a Pull Request on GitHub with:
 
-- Tiêu đề mô tả rõ ràng
-- Mô tả chi tiết thay đổi
-- Liên kết đến issue liên quan (nếu có)
-- Screenshot cho UI changes
+- Clear descriptive title
+- Detailed description of changes
+- Link to related issue (if any)
+- Screenshots for UI changes
 
-## Lưu ý quan trọng về nhánh
+## Important Notes on Branching
 
-### QUAN TRỌNG: TẤT CẢ PR MERGE VÀO NHÁNH DEV
+### IMPORTANT: ALL PRs MERGE INTO THE DEV BRANCH
 
-**KHÔNG BAO GIỜ tạo Pull Request vào nhánh `main`**
+**NEVER create a Pull Request into the `main` branch**
 
-- Nhánh `main` chỉ chứa bản release ổn định và chỉ được merge bởi maintainer
-- Tất cả Pull Request phải nhắm vào nhánh `dev`
-- Sau khi pass tất cả các bài CI/CD test và được maintainer review, code sẽ được merge vào `dev`
-- Khi đủ điều kiện, code sẽ được merge từ `dev` sang `main` bởi maintainer để bump version
+- The `main` branch only contains stable releases and is only merged by the maintainer
+- All Pull Requests must target the `dev` branch
+- After passing all CI/CD tests and being reviewed by the maintainer, code will be merged into `dev`
+- When eligible, code will be merged from `dev` to `main` by the maintainer to bump the version
 
-### Cấu trúc nhánh
+### Branch Structure
 
 ```
-main    ← Bản release ổn định (chỉ maintainer được merge)
+main    ← Stable release (only maintainer merges)
   ↑
-dev     ← Nhánh phát triển chính (tất cả PR merge vào đây)
+dev     ← Main development branch (all PRs merge here)
   ↑
-feature/*, fix/*, hotfix/*  ← Nhánh cá nhân cho mỗi PR
+feature/*, fix/*, hotfix/*  ← Personal branch for each PR
 ```
 
-### Quy trình merge
+### Merge Process
 
-1. Developer tạo PR vào `dev`
-2. Code review bởi maintainer
-3. Merge vào `dev`
-4. Test trên `dev`
-5. Khi ổn định → merge `dev` → `main` (bởi maintainer)
+1. Developer creates PR to `dev`
+2. Code review by maintainer
+3. Merge into `dev`
+4. Test on `dev`
+5. When stable → merge `dev` → `main` (by maintainer)
 
-## Báo cáo lỗi
+## Bug Reporting
 
-Khi báo cáo lỗi, vui lòng cung cấp:
+When reporting a bug, please provide:
 
-- Phiên bản fcitx5-lotus
-- Hệ điều hành và phiên bản
-- Các bước để tái hiện lỗi
-- Log hoặc screenshot (nếu có) (Log bằng lệnh fcitx5-diagnose)
-- Môi trường (desktop environment, terminal, v.v.)
+- fcitx5-lotus version
+- Operating system and version
+- Steps to reproduce the bug
+- Log or screenshot (if any) (Log via `fcitx5-diagnose` command)
+- Environment (desktop environment, terminal, etc.)
 
-## Đề xuất tính năng
+## Feature Requests
 
-Trước khi đề xuất tính năng mới:
+Before proposing a new feature:
 
-- Kiểm tra xem tính năng đã tồn tại chưa
-- Tìm kiếm issue tương tự
-- Mô tả rõ ràng tính năng và use case
-- Giải thích tại sao tính năng này cần thiết
+- Check if the feature already exists
+- Search for similar issues
+- Clearly describe the feature and use case
+- Explain why this feature is necessary
 
-## Giấy phép
+## License
 
-Bằng cách đóng góp, bạn đồng ý rằng code của bạn sẽ được cấp phép theo cùng giấy phép với dự án (GPL-3.0-or-later).
+By contributing, you agree that your code will be licensed under the same license as the project (GPL-3.0-or-later).
 
 ---
 
-Cảm ơn bạn đã đóng góp!
+Thank you for contributing!

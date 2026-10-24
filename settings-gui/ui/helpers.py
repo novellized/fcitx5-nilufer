@@ -17,14 +17,14 @@ HELPERS = {
     "FreeMarking": N_("You can type tone marks at the end of the word or anywhere inside."),
     "CapitalizeMacro": N_(
         "Automatically match expansion case to trigger key case.\n\n"
-        "Example if 'kg' is 'Khô gà':\n"
-        "- kg -> khô gà\n"
-        "- Kg -> Khô gà\n"
-        "- KG -> KHÔ GÀ"
+        "Example if 'tc' is 'Türkiye Cumhuriyeti':\n"
+        "- tc -> türkiye cumhuriyeti\n"
+        "- Tc -> Türkiye Cumhuriyeti\n"
+        "- TC -> TÜRKİYE CUMHURİYETİ"
     ),
     "AutoNonVnRestore": N_(
         "Automatically revert the typed sequence if the resulting word is not in the dictionary.\n"
-        "This helps prevent accidental Vietnamese transformations on English words or mixed text."
+        "This helps prevent accidental transformations on foreign words or mixed text."
     ),
     "EnableMacroInOffMode": N_(
         "Allow macros to work when the input mode is OFF.\n"
@@ -85,7 +85,7 @@ def notify_parent_changed(widget) -> None:
 def local_dict_path() -> str:
     """Returns the path of the user dictionary edited by the settings GUI."""
     xdg_data_home = os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share"))
-    return os.path.join(xdg_data_home, "fcitx5/lotus/vietnamese.cm.dict")
+    return os.path.join(xdg_data_home, "fcitx5/lotus/turkish.dict")
 
 
 def set_add_button_mode(

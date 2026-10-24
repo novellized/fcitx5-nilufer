@@ -1,4 +1,4 @@
-[English](README.en.md) | [Tiếng Việt](README.md)
+[English](README.md) | [Tiếng Việt](README_vi.md)
 
 <a id="readme-top"></a>
 
@@ -7,12 +7,12 @@
     <img src="data/fcitx-lotus-README.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h2 align="center">Fcitx5 Lotus</h2>
+<h2 align="center">Fcitx5 Lotus</h2>
 
-  <p align="center">
-    <b>A simple, high-performance Vietnamese input method for Linux</b>
+<p align="center">
+    <b>Bộ gõ tiếng Việt đơn giản, hiệu năng cao cho Linux</b>
     <br />
-    <a href="https://lotusinputmethod.github.io/"><strong>Discover the homepage »</strong></a>
+    <a href="https://lotusinputmethod.github.io/"><strong>Khám phá trang chủ »</strong></a>
     <br />
     <br />
     <a href="https://github.com/LotusInputMethod/fcitx5-lotus/releases">
@@ -39,76 +39,66 @@
     <a href="https://deepwiki.com/LotusInputMethod/fcitx5-lotus"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
   </p>
 
-  <p align="center">
-    <a href="https://lotusinputmethod.github.io/#installation"><strong>Installation »</strong></a>
+<p align="center">
+    <a href="https://lotusinputmethod.github.io/#installation"><strong>Cài đặt »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/LotusInputMethod/fcitx5-lotus/issues/new?template=bug_report.yml">Report Bug</a>
-    &middot;
-    <a href="https://github.com/LotusInputMethod/fcitx5-lotus/issues/new?template=feature_request.yml">Request Feature</a>
+    <a href="https://github.com/LotusInputMethod/fcitx5-lotus/issues/new?template=bug_report.yml">Báo lỗi</a>
+    ·
+    <a href="https://github.com/LotusInputMethod/fcitx5-lotus/issues/new?template=feature_request.yml">Yêu cầu tính năng</a>
   </p>
 </div>
 
 <br />
 
-This project is an optimized fork of [VMK input method](https://github.com/thanhpy2009/VMK). Sincere thanks to the author Thanh for laying the foundation for this input method.
+Dự án này là bản fork được tối ưu hóa từ [bộ gõ VMK](https://github.com/thanhpy2009/VMK). Chân thành cảm ơn tác giả Thành đã đặt nền móng cho bộ gõ này.
 
-## Installation & Usage Guide
+## Cài đặt & Hướng dẫn sử dụng
 
-To have the best experience and get the most out of insallation, configuration, and support for each Linux distribution (Arch, Debian, Ubuntu, Fedora, NixOS...), please visit the project website:
+Để có trải nghiệm tốt nhất và nhận được các hướng dẫn cài đặt, cấu hình chi tiết, chính xác cho từng bản phân phối Linux (Arch, Debian, Ubuntu, Fedora, NixOS...), vui lòng truy cập trang chủ của dự án:
 
-**[See the installation guide for more details](https://lotusinputmethod.github.io/#installation)**
+**[Xem Hướng dẫn cài đặt chi tiết tại đây](https://lotusinputmethod.github.io/#installation)**
 
 ---
 
-## Compilation from source (for developers)
+## Biên dịch từ mã nguồn (Dành cho nhà phát triển)
 
-If you want to compile the input method from source to contribute or customize:
+Nếu bạn muốn tự biên dịch bộ gõ từ mã nguồn để đóng góp hoặc tuỳ chỉnh:
 
-### Dependencies
+### Yêu cầu hệ thống
 
 - **Debian/Ubuntu:** `sudo apt-get install cmake extra-cmake-modules libfcitx5core-dev libfcitx5config-dev libfcitx5utils-dev libevdev-dev libinput-dev libnotify-dev libudev-dev g++ hicolor-icon-theme pkg-config fcitx5-modules-dev python3-qtpy python3-dbus acl`
 - **Fedora/RHEL:** `sudo dnf install cmake extra-cmake-modules fcitx5-devel libevdev-devel libinput-devel libnotify-devel libudev-devel gcc-c++ hicolor-icon-theme systemd-devel python3-pyside6 python3-QtPy python3-dbus acl`
 - **openSUSE:** `sudo zypper install cmake kf6-extra-cmake-modules fcitx5-devel libevdev-devel libinput-devel libnotify-devel systemd-devel gcc-c++ hicolor-icon-theme systemd-devel python3-pyside6 python3-QtPy python3-dbus-python acl`
 - **Arch:** `sudo pacman -S --needed cmake extra-cmake-modules gcc git python make pkgconf acl fcitx5 libevdev libinput libnotify hicolor-icon-theme python-qtpy python-dbus`
 
-### Install
+### Cài đặt
 
 ```bash
 git clone https://github.com/LotusInputMethod/fcitx5-lotus.git
 cd fcitx5-lotus
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib . #LIBDIR will vary depending on the distro
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib . #LIBDIR tuỳ vào distro
 make
 sudo make install
 ```
 
 ---
 
-<a id="contributing"></a>
+<a id="đóng-góp"></a>
 
-## 🤝 Contributing
+## 🤝 Đóng góp
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contribution you make is **greatly appreciated**.
+Đóng góp là điều làm cho cộng đồng mã nguồn mở trở thành một nơi tuyệt vời để học hỏi, truyền cảm hứng và sáng tạo. Mọi đóng góp của bạn đều được **đánh giá cao**.
 
-Please see the detailed guide [here](CONTRIBUTING.en.md) for how to participate in project development, the Pull Request process, code style rules, and **code of conduct**.
+Vui lòng xem hướng dẫn chi tiết [tại đây](CONTRIBUTING.md) để biết cách tham gia phát triển dự án, quy trình Pull Request, quy tắc code style và **quy tắc ứng xử**.
 
-Don't forget to give the project a ⭐! Thank you very much!
-
----
-
-<a id="license"></a>
-
-## 📃 License
-
-This project is distributed under the terms of the **GNU General Public License v3 (GPL-3.0-or-later)**. See [`LICENSE`](LICENSE) for details.
-
-Third-party libraries (including MIT-licensed components) retain their original licenses and copyrights. Full attributions are available in the application's **About** page.
+Đừng quên tặng dự án một ⭐! Cảm ơn bạn rất nhiều!
 
 ---
 
-## Contributors ✨
+## Những người đóng góp ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/en/reference/emoji-key)):
+Cảm ơn những con người tuyệt vời ([chú thích emoji](https://allcontributors.org/en/reference/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -161,11 +151,27 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/e
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+Dự án này tuân thủ cấu trúc của [all-contributors](https://github.com/all-contributors/all-contributors). Mọi đóng góp đều được hoan nghênh!
 
 ---
 
-## ✨ Star History
+<a id="giấy-phép"></a>
+
+## 📃 Giấy phép
+
+Dự án được phân phối dưới giấy phép **GNU General Public License v3 (GPL-3.0-or-later)**. Xem [`LICENSE`](LICENSE) để biết thêm chi tiết.
+
+Các thư viện bên thứ ba (bao gồm các thành phần theo giấy phép MIT) vẫn giữ nguyên bản quyền của các tác giả gốc. Cụ thể:
+
+- **[bamboo-core](https://github.com/BambooEngine/bamboo-core)** — engine gõ tiếng Việt gốc bằng Go, MIT, © 2018 Luong Thanh Lam. Bản MIT được giữ tại [`lotus/LICENSE.bamboo-core`](lotus/LICENSE.bamboo-core).
+- **[VMK](https://github.com/thanhpy2009/VMK)** — dự án mà addon này fork trực tiếp, GPL-3.0-or-later.
+- **[fcitx5-bamboo](https://github.com/fcitx/fcitx5-bamboo)** — addon fcitx5 mà phần glue được dựa theo, LGPL-2.1.
+
+Phần C++ của engine (`lotus/`) là bản port từ bamboo-core và phát hành dưới GPL-3.0-or-later. Danh sách ghi công đầy đủ có trong [`CREDITS`](CREDITS) và trong mục **About** của ứng dụng.
+
+---
+
+## ✨ Lịch sử sao
 
 <a href="https://github.com/LotusInputMethod/fcitx5-lotus">
   <img

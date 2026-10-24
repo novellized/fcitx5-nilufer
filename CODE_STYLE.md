@@ -1,71 +1,73 @@
-# Quy tắc code style
+[English](CODE_STYLE.md) | [Tiếng Việt](CODE_STYLE_vi.md)
 
-Tài liệu này là nguồn duy nhất cho quy tắc code của fcitx5-lotus. Khi có xung đột, tài liệu này thắng.
+# Code style rules
 
-## 1. Format & lint (bắt buộc)
+This document is the single source of truth for the code rules of fcitx5-lotus. On conflict, this document wins.
 
-- C/C++: `clang-format` theo `.clang-format`; `clang-tidy` theo `.clang-tidy`, **0 cảnh báo trong code của repo**.
-- `NOLINT` phải ghi rõ check và lý do, ví dụ `// NOLINT(cppcoreguidelines-avoid-const-or-ref-data-members)`.
-- Python (`settings-gui`): `ruff check` + `ruff format` (cấu hình ở `pyproject.toml`).
+## 1. Format & lint (mandatory)
 
-## 2. Chuẩn ngôn ngữ
+- C/C++: `clang-format` per `.clang-format`; `clang-tidy` per `.clang-tidy`, **0 warnings in repository code**.
+- `NOLINT` must name the check and the reason, e.g. `// NOLINT(cppcoreguidelines-avoid-const-or-ref-data-members)`.
+- Python (`settings-gui`): `ruff check` + `ruff format` (configuration in `pyproject.toml`).
 
-- C++20 (`CMAKE_CXX_STANDARD 20`), không hạ chuẩn.
-- Dùng thư viện chuẩn: `std::string_view`, `std::span`, `std::ranges`, `std::erase_if`, `std::optional`, `std::cmp_*`, designated initializer.
-- Không viết lại thứ thư viện chuẩn đã có. Không dùng `std::regex` trong engine (`lotus/`, phần `src/` nạp vào engine): nhị phân phình và không cần thiết.
+## 2. Language standard
 
-## 3. RAII & quyền sở hữu
+- C++20 (`CMAKE_CXX_STANDARD 20`), never downgrade.
+- Use the standard library: `std::string_view`, `std::span`, `std::ranges`, `std::erase_if`, `std::optional`, `std::cmp_*`, designated initializers.
+- Do not rewrite what the standard library already provides. Do not use `std::regex` in the engine (`lotus/`, the part of `src/` loaded into the engine): it grows the binary and is not needed.
 
-- Mọi tài nguyên phải có chủ sở hữu RAII: fd dùng `FdGuard`, handle/thừa kế C dùng `std::unique_ptr` + deleter (`LibevdevDevice`, `LibevdevUinput`, `LibinputEvent`, `UdevDeleter`…).
-- Không để fd thô sống qua nhiều câu lệnh rồi `close()` tay; bọc ngay khi nhận (`FdGuard fd(open(...));`), kể cả trên nhánh lỗi.
-- Không `malloc`/`free`/`strdup`. `new`/`delete` chỉ được phép ở factory của fcitx5 (kèm `NOLINT`).
-- Class giữ tài nguyên: Rule of five tường minh (xoá copy, khai báo move); không viết destructor tay chỉ để `close()`/`free()`.
+## 3. RAII & ownership
 
-## 4. Con trỏ & tham chiếu
+- Every resource needs an RAII owner: file descriptors use `FdGuard`, C handles/inherited handles use `std::unique_ptr` + a deleter (`LibevdevDevice`, `LibevdevUinput`, `LibinputEvent`, `UdevDeleter`…).
+- Never keep a raw descriptor alive across statements and `close()` it by hand; wrap it as soon as it is obtained (`FdGuard fd(open(...));`), including on error paths.
+- No `malloc`/`free`/`strdup`. `new`/`delete` are allowed only in fcitx5 factories (with `NOLINT`).
+- Classes that own resources: explicit rule of five (delete copy, declare move); no hand-written destructor that only calls `close()`/`free()`.
 
-- Con trỏ thô chỉ dùng khi: (a) giá trị có thể null, (b) API C, (c) chữ ký do fcitx5/libinput áp (virtual override, callback, factory).
-- Mượn non-null, không đổi đích ⇒ dùng reference (ví dụ `LotusEngine& engine_`).
-- Không truyền con trỏ khi reference đủ; không nhận tham số bằng value nếu chỉ đọc.
+## 4. Pointers & references
 
-## 5. Chuỗi
+- Raw pointers are only for: (a) values that may be null, (b) C APIs, (c) signatures imposed by fcitx5/libinput (virtual override, callback, factory).
+- Non-null borrows that never change target use a reference (e.g. `LotusEngine& engine_`).
+- Do not pass a pointer when a reference is enough; do not take parameters by value when they are only read.
 
-- Tham số/ô dữ liệu chỉ đọc: `std::string_view`; text đã decode: `std::u32string_view`; chỉ dùng `std::string` khi thực sự sở hữu/biến đổi.
-- Giữ `const char*` khi hai đầu là API C (`open`, `getenv`, `printf`, `popen`) hoặc khi API fcitx5 nhận `const std::string&` — đổi kiểu ở đó chỉ tạo `std::string(...)` thừa.
-- `test/` được giữ `const char*` trong helper `check(name, ...)` vì đi kèm `std::printf("%s")`.
+## 5. Strings
 
-## 6. Cấu trúc file & header
+- Read-only parameters and data members: `std::string_view`; decoded text: `std::u32string_view`; use `std::string` only when you really own or mutate it.
+- Keep `const char*` when both ends are C APIs (`open`, `getenv`, `printf`, `popen`) or when the fcitx5 API takes `const std::string&` — changing the type there only adds a useless `std::string(...)`.
+- `test/` keeps `const char*` in the `check(name, ...)` helpers because they feed `std::printf("%s")`.
 
-- Mỗi `.h` phải có `.cpp` cùng tên. Ngoại lệ: header chỉ chứa khai báo kiểu/`constexpr`/accessor một dòng/deleter/type alias/macro log (`common/*.h`, `src/lotus-config.h`, `src/lotus-mode.h`, `src/lotus-log.h`, `src/emoji-entry.h`, `lotus/types.h`, `lotus/transformation.h`, `lotus/rule.h`, `test/*.h`).
-- Header chỉ khai báo + doxygen; thân hàm để ở `.cpp`, trừ accessor một dòng, deleter, template, `inline constexpr`.
-- Code dùng chung giữa addon và server đặt ở `common/` với tên `common-xxx.{h,cpp}`.
+## 6. File & header structure
 
-## 7. Đặt tên
+- Every `.h` must have a `.cpp` with the same name. Exceptions: headers that only hold type declarations/`constexpr`/one-line accessors/deleters/type aliases/macro log (`common/*.h`, `src/lotus-config.h`, `src/lotus-mode.h`, `src/lotus-log.h`, `src/emoji-entry.h`, `lotus/types.h`, `lotus/transformation.h`, `lotus/rule.h`, `test/*.h`).
+- Headers only declare (plus doxygen); function bodies live in the `.cpp`, except one-line accessors, deleters, templates and `inline constexpr`.
+- Code shared between the addon and the server lives in `common/` and is named `common-xxx.{h,cpp}`.
 
-- Type: `PascalCase`; hàm/biến: `camelCase`; thành viên: `camelCase_`; hằng/`static constexpr`: `kPascalCase` (kể cả trong class: `kMaxEntries`, `kMaxBufferedKeys`); global: `g_camelCase`; macro và hằng môi trường: `UPPER_SNAKE`.
-- Enum class: `PascalCase` cho cả type lẫn member (`LotusMode::Smooth`, `KbOp::Backspace`, `LogLevel::Debug`).
-- File: `kebab-case.{h,cpp}`; include guard: `_<THƯMỤC>_<TÊN_FILE>_H_` (ví dụ `_COMMON_FD_GUARD_H_`).
-- Ngoại lệ: tên hàm trong `libinput_interface` (`open_restricted`, `close_restricted`) giữ đúng như tài liệu libinput.
+## 7. Naming
 
-## 8. Log & lỗi
+- Types: `PascalCase`; functions/variables: `camelCase`; data members: `camelCase_`; constants/`static constexpr`: `kPascalCase` (also inside classes: `kMaxEntries`, `kMaxBufferedKeys`); globals: `g_camelCase`; macros and environment constants: `UPPER_SNAKE`.
+- Enum class: `PascalCase` for both the type and its members (`LotusMode::Smooth`, `KbOp::Backspace`, `LogLevel::Debug`).
+- Files: `kebab-case.{h,cpp}`; include guards: `_<DIRECTORY>_<FILE_NAME>_H_` (e.g. `_COMMON_FD_GUARD_H_`).
+- Exception: the `libinput_interface` callbacks (`open_restricted`, `close_restricted`) keep the names used by the libinput documentation.
+
+## 8. Logging & errors
 
 - Addon: `LOTUS_INFO`/`LOTUS_WARN`/`LOTUS_ERROR`; server: `LotusLogger::instance().info/warn/error`.
-- Thông điệp tiếng Anh, nêu hành động + đối tượng; chọn đúng mức; không log lặp trong vòng lặp nóng (log lần đầu như `UinputDevice::reportWriteFailure`).
+- Messages in English, stating the action and the subject; pick the right level; do not log repeatedly in a hot loop (log once, like `UinputDevice::reportWriteFailure`).
 
-## 9. Comment & tài liệu
+## 9. Comments & documentation
 
-- Comment trong code bằng tiếng Anh (theo codebase hiện tại); mỗi file có khối `@file`.
-- Mọi khai báo công khai có doxygen (`@brief`, `@param`, `@return`).
-- Không để code bị comment-out, log debug tạm, `TODO/FIXME` mồ côi, comment đùa — xoá hẳn trước khi mở PR.
+- Code comments are in English (as in the current codebase); every file has an `@file` block.
+- Every public declaration has doxygen (`@brief`, `@param`, `@return`).
+- Leave no commented-out code, temporary debug logs, orphan `TODO/FIXME` or joke comments — delete them before opening a PR.
 
-## 10. Test
+## 10. Tests
 
-- Hành vi mới hoặc bug fix phải có test trong `test/`, đăng ký bằng helper CMake (`add_lotus_headless_test` / `add_lotus_unit_test`).
-- Mẫu chung: `check(name, condition)` / `reportFailure(step, expected, actual, meaning)`, in `FAIL`, trả exit code khác 0 khi sai.
-- Test phải deterministic, không phụ thuộc mạng/màn hình; test cần bind socket thì chạy trong namespace riêng (`LOTUS_SOCKET_NAMESPACE`).
+- New behaviour or bug fixes need a test in `test/`, registered through the CMake helpers (`add_lotus_headless_test` / `add_lotus_unit_test`).
+- Common pattern: `check(name, condition)` / `reportFailure(step, expected, actual, meaning)`, print `FAIL`, and return a non-zero exit code on failure.
+- Tests must be deterministic and independent of network/display; tests that bind sockets run in their own namespace (`LOTUS_SOCKET_NAMESPACE`).
 
-## 11. Phạm vi PR (một PR một vấn đề)
+## 11. PR scope (one PR, one problem)
 
-- **Mỗi PR chỉ giải quyết đúng một vấn đề.** Cần sửa nhiều thứ ⇒ tách thành nhiều nhánh/nhiều PR.
-- Không trộn refactor, format, đổi tên, cập nhật tài liệu không liên quan vào PR sửa lỗi/tính năng.
-- Phát hiện việc ngoài phạm vi ⇒ ghi issue hoặc mở PR riêng, không nhét vào PR đang làm.
-- PR phải: nhánh đích `dev`, build 0 warning, `ctest` xanh, commit message 1 dòng theo `type(scope): mô tả ngắn`.
+- **Each PR solves exactly one problem.** Several things to fix ⇒ several branches/PRs.
+- Do not mix unrelated refactors, formatting, renames or documentation into a bug-fix/feature PR.
+- Found out-of-scope work ⇒ file an issue or open a separate PR; do not stuff it into the current one.
+- A PR must: target `dev`, build with 0 warnings, pass `ctest`, and use a one-line commit message following `type(scope): short description`.

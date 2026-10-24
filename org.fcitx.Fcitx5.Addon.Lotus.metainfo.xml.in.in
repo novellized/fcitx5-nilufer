@@ -9,8 +9,8 @@
   <description>
     <p>Nilüfer is a Turkish Telex input method for Fcitx5.</p>
   </description>
-  <url type="homepage">https://fcitx-im.org</url>
-  <url type="bugtracker">https://github.com/LotusInputMethod/fcitx5-lotus/issues</url>
+  <url type="homepage">https://github.com/novellized/fcitx5-nilufer</url>
+  <url type="bugtracker">https://github.com/novellized/fcitx5-nilufer/issues</url>
   <project_group>Fcitx</project_group>
   <releases>
     <release version="@PROJECT_VERSION@" date="2026-10-24" />

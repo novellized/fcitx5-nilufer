@@ -23,4 +23,4 @@ foreach(ICON ${LOTUS_STATUS_ICONS})
         RENAME "${ICON}.svg")
 endforeach()
 
-install(FILES dictionaries/vietnamese.cm.dict DESTINATION "${FCITX_INSTALL_PKGDATADIR}/lotus")
+install(FILES dictionaries/turkish.dict DESTINATION "${FCITX_INSTALL_PKGDATADIR}/lotus")

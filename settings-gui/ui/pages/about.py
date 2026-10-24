@@ -64,7 +64,7 @@ class AboutPage(QWidget):
 
         layout.addWidget(logo, alignment=Qt.AlignCenter)
 
-        title = QLabel("Fcitx5 Lotus")
+        title = QLabel("Nilüfer")
         title.setObjectName("AboutTitle")
         layout.addWidget(title, alignment=Qt.AlignCenter)
 
@@ -83,7 +83,7 @@ class AboutPage(QWidget):
         """)
         layout.addWidget(version, alignment=Qt.AlignCenter)
 
-        desc = QLabel(_("Modern, fast, and stable Vietnamese input method for Linux."))
+        desc = QLabel(_("Modern, fast, and stable Turkish Telex input method for Linux."))
         desc.setWordWrap(True)
         desc.setAlignment(Qt.AlignCenter)
         desc.setObjectName("AboutDescription")
@@ -92,7 +92,7 @@ class AboutPage(QWidget):
 
         # GitHub Project Link
         github_link = QLabel(
-            '<a href="https://github.com/LotusInputMethod/fcitx5-lotus" style="text-decoration: none;">https://github.com/LotusInputMethod/fcitx5-lotus</a>'
+            '<a href="https://github.com/novellized/fcitx5-nilufer" style="text-decoration: none;">https://github.com/novellized/fcitx5-nilufer</a>'
         )
         github_link.setOpenExternalLinks(True)
         layout.addWidget(github_link, alignment=Qt.AlignCenter)

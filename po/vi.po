@@ -503,29 +503,27 @@ msgid "Light"
 msgstr "Sáng"
 
 #: org.fcitx.Fcitx5.Addon.Lotus.metainfo.xml.in.in:7
-msgid "Lotus"
-msgstr "Lotus"
+msgid "Nilüfer"
+msgstr "Nilüfer"
 
 #: src/lotus-engine.cpp:1140
-msgid "Lotus - Off"
-msgstr "Lotus - Tắt"
+msgid "Nilüfer - Off"
+msgstr "Nilüfer - Tắt"
 
 #: settings-gui/ui/main_window.py:33
-msgid "Lotus Settings"
-msgstr "Cài đặt Lotus"
+msgid "Nilüfer Settings"
+msgstr "Cài đặt Nilüfer"
 
-msgid "Lotus Wrapper For Fcitx"
-msgstr "Bộ gõ Lotus cho Fcitx"
+msgid "Nilüfer Turkish Input Method For Fcitx"
+msgstr "Bộ gõ tiếng Thổ Nhĩ Kỳ Nilüfer cho Fcitx"
 
 #: org.fcitx.Fcitx5.Addon.Lotus.metainfo.xml.in.in:10
-msgid ""
-"Lotus is a Vietnamese input method for Fcitx5, supporting multiple typing "
-"modes and input methods."
-msgstr "Lotus là bộ gõ tiếng Việt cho Fcitx5, hỗ trợ nhiều chế độ và kiểu gõ."
+msgid "Nilüfer is a Turkish Telex input method for Fcitx5."
+msgstr "Nilüfer là bộ gõ tiếng Thổ Nhĩ Kỳ kiểu Telex cho Fcitx5."
 
 #: src/lotus-notify.cpp:86
 msgid "Lotus: the uinput server is not running"
-msgstr "Lotus: máy chủ uinput đang không chạy"
+msgstr "Nilüfer: máy chủ uinput đang không chạy"
 
 #: src/lotus-config.h:155 src/lotus-config.h:223 src/lotus-engine.cpp:193
 #: src/lotus-engine.cpp:348

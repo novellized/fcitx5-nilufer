@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
     TestInstance            testInstance;
     fcitx::LotusEngine      engine(&testInstance.instance);
     TestInputContext        context(&testInstance.instance);
-    fcitx::InputMethodEntry entry("lotus", "Lotus", "vi", "lotus");
+    fcitx::InputMethodEntry entry("lotus", "Nilüfer", "tr", "lotus");
     context.focusIn();
     bool                                            ok = true;
 

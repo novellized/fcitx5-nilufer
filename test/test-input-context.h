@@ -48,7 +48,7 @@
  *     auto context = std::make_unique<TestInputContext>(&testInstance.instance);
  *     context->setCapabilityFlags(fcitx::CapabilityFlag::Preedit);
  *     context->focusIn();
- *     fcitx::InputMethodEntry entry("lotus", "Lotus", "vi", "lotus");
+ *     fcitx::InputMethodEntry entry("lotus", "Nilüfer", "tr", "lotus");
  *     fcitx::InputContextEvent in(context.get(), fcitx::EventType::InputContextFocusIn);
  *     engine.activate(entry, in);
  *

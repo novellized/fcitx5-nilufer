@@ -288,18 +288,18 @@ namespace fcitx {
         };
         if (config_.enableDictionary.value()) {
 #if LOTUS_USE_MODERN_FCITX_API
-            auto fd = StandardPaths::global().open(StandardPathsType::PkgData, "lotus/vietnamese.cm.dict");
+            auto fd = StandardPaths::global().open(StandardPathsType::PkgData, "lotus/turkish.dict");
 #else
-            auto fd = StandardPath::global().open(StandardPath::Type::PkgData, "lotus/vietnamese.cm.dict", O_RDONLY);
+            auto fd = StandardPath::global().open(StandardPath::Type::PkgData, "lotus/turkish.dict", O_RDONLY);
 #endif
             if (fd.isValid()) {
                 loadFromFd(fd.release());
             }
         } else {
 #if LOTUS_USE_MODERN_FCITX_API
-            auto paths = StandardPaths::global().locateAll(StandardPathsType::PkgData, "lotus/vietnamese.cm.dict");
+            auto paths = StandardPaths::global().locateAll(StandardPathsType::PkgData, "lotus/turkish.dict");
 #else
-            auto paths = StandardPath::global().locateAll(StandardPath::Type::PkgData, "lotus/vietnamese.cm.dict");
+            auto paths = StandardPath::global().locateAll(StandardPath::Type::PkgData, "lotus/turkish.dict");
 #endif
             for (const auto& p : paths) {
 #if LOTUS_USE_MODERN_FCITX_API
@@ -1137,9 +1137,9 @@ namespace fcitx {
 
     std::string LotusEngine::subModeLabelImpl(const InputMethodEntry& /*entry*/, InputContext& /*inputContext*/) {
         switch (currentMode()) {
-            case LotusMode::Off: return _("Lotus - Off");
+            case LotusMode::Off: return _("Nilüfer - Off");
             case LotusMode::Emoji: return "😄";
-            default: return isGnome_ ? "vi" : "🪷";
+            default: return "tr";
         }
     }
 

@@ -56,7 +56,7 @@ int main() {
     if (!listener.valid())
         return 1;
 
-    fcitx::InputMethodEntry entry("lotus", "Lotus", "vi", "lotus");
+    fcitx::InputMethodEntry entry("lotus", "Nilüfer", "tr", "lotus");
     auto                    context = std::make_unique<TestInputContext>(&testInstance.instance);
     gainFocus(engine, entry, *context);
 

@@ -40,7 +40,7 @@ int main() {
     config.setValueByPath("InputMethod", "Telex");
     engine.setConfig(config);
 
-    fcitx::InputMethodEntry entry("lotus", "Lotus", "vi", "lotus");
+    fcitx::InputMethodEntry entry("lotus", "Nilüfer", "tr", "lotus");
     auto                    context = std::make_unique<TestInputContext>(&testInstance.instance);
     context->setCapabilityFlags(fcitx::CapabilityFlag::Preedit);
     context->focusIn();

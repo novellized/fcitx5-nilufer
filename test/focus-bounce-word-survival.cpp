@@ -87,7 +87,7 @@ int main() {
     if (!listener.valid())
         return 1;
 
-    fcitx::InputMethodEntry entry("lotus", "Lotus", "vi", "lotus");
+    fcitx::InputMethodEntry entry("lotus", "Nilüfer", "tr", "lotus");
     auto                    context = std::make_unique<TestInputContext>(&testInstance.instance);
     // #610 fidelity: Brave on Wayland drives Lotus through an ibus context.
     // Note: engine branches on frontend == "dbus" (lotus-engine.cpp:394,735) and on

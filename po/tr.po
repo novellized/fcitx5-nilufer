@@ -1,0 +1,111 @@
+# Turkish translation for Nilüfer (Fcitx5 Turkish Input Method).
+# Copyright (C) 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: fcitx5-nilufer 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-24 12:00+0700\n"
+"PO-Revision-Date: 2026-10-24 12:00+0700\n"
+"Last-Translator: Nilüfer Contributors\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Nilüfer"
+msgstr "Nilüfer"
+
+msgid "Nilüfer - Off"
+msgstr "Nilüfer - Kapalı"
+
+msgid "Nilüfer Settings"
+msgstr "Nilüfer Ayarları"
+
+msgid "Nilüfer Turkish Input Method For Fcitx"
+msgstr "Fcitx için Nilüfer Türkçe Giriş Yöntemi"
+
+msgid "Configure Nilüfer Turkish Input Method"
+msgstr "Nilüfer Türkçe Giriş Yöntemini Yapılandır"
+
+msgid "Nilüfer is a Turkish Telex input method for Fcitx5."
+msgstr "Nilüfer, Fcitx5 için Türkçe Telex giriş yöntemidir."
+
+msgid "Turkish Telex"
+msgstr "Türkçe Telex"
+
+msgid "Custom"
+msgstr "Özel"
+
+msgid "Unicode"
+msgstr "Unicode"
+
+msgid "&Apply"
+msgstr "&Uygula"
+
+msgid "&Cancel"
+msgstr "İ&ptal"
+
+msgid "&OK"
+msgstr "&Tamam"
+
+msgid "&Reset"
+msgstr "&Sıfırla"
+
+msgid "About"
+msgstr "Hakkında"
+
+msgid "Action"
+msgstr "Eylem"
+
+msgid "Add"
+msgstr "Ekle"
+
+msgid "Add Keymap"
+msgstr "Tuş Eşlemi Ekle"
+
+msgid "Allow Macro in Off Mode"
+msgstr "Kapalı Modda Makroya İzin Ver"
+
+msgid "Close"
+msgstr "Kapat"
+
+msgid "Dictionary"
+msgstr "Sözlük"
+
+msgid "Edit"
+msgstr "Düzenle"
+
+msgid "Macro"
+msgstr "Makro"
+
+msgid "Macros"
+msgstr "Makrolar"
+
+msgid "Main Settings"
+msgstr "Ana Ayarlar"
+
+msgid "Mode"
+msgstr "Mod"
+
+msgid "Preedit"
+msgstr "Ön Düzenleme"
+
+msgid "Remove"
+msgstr "Kaldır"
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "General"
+msgstr "Genel"
+
+msgid "Key"
+msgstr "Tuş"
+
+msgid "Value"
+msgstr "Değer"

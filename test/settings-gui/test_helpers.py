@@ -82,14 +82,14 @@ class LocalDictPathTests(unittest.TestCase):
 
     def test_uses_xdg_data_home_when_set(self):
         os.environ["XDG_DATA_HOME"] = "/tmp/lotus-data"
-        expected = os.path.join("/tmp/lotus-data", "fcitx5/lotus/vietnamese.cm.dict")
+        expected = os.path.join("/tmp/lotus-data", "fcitx5/lotus/turkish.dict")
         self.assertEqual(local_dict_path(), expected)
 
     def test_falls_back_to_home(self):
         os.environ.pop("XDG_DATA_HOME", None)
         os.environ["HOME"] = "/home/lotus-user"
         expected = os.path.join(
-            "/home/lotus-user", ".local/share", "fcitx5/lotus/vietnamese.cm.dict"
+            "/home/lotus-user", ".local/share", "fcitx5/lotus/turkish.dict"
         )
         self.assertEqual(local_dict_path(), expected)
 

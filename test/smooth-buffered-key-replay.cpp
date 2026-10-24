@@ -56,7 +56,7 @@ int main() {
         return 1;
     auto context = std::make_unique<TestInputContext>(&testInstance.instance);
     context->focusIn();
-    fcitx::InputMethodEntry  entry("lotus", "Lotus", "vi", "lotus");
+    fcitx::InputMethodEntry  entry("lotus", "Nilüfer", "tr", "lotus");
     fcitx::InputContextEvent focus(context.get(), fcitx::EventType::InputContextFocusIn);
     engine.activate(entry, focus);
     context->resetPreeditUpdateCount();
