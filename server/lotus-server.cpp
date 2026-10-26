@@ -225,8 +225,8 @@ int main(int argc, char* argv[]) {
     pinToPcore();
 
     const std::string    socketNamespace = lotusSocketNamespace(targetUser);
-    const AbstractSocket kbSocket        = makeAbstractSocket("lotussocket-" + socketNamespace + "-kbSocket");
-    const AbstractSocket mouseSocket     = makeAbstractSocket("lotussocket-" + socketNamespace + "-mouseSocket");
+    const AbstractSocket kbSocket        = makeAbstractSocket("nilufersocket-" + socketNamespace + "-kbSocket");
+    const AbstractSocket mouseSocket     = makeAbstractSocket("nilufersocket-" + socketNamespace + "-mouseSocket");
 
     // Setup Uinput
     UinputDevice       uinput;

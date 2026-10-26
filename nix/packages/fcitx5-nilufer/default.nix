@@ -28,12 +28,12 @@ let
   );
 in
 stdenv.mkDerivation (finalAttrs: {
-  pname = "fcitx5-lotus";
+  pname = "fcitx5-nilufer";
   version = "6.0.0";
 
   src = fetchFromGitHub {
-    owner = "LotusInputMethod";
-    repo = "fcitx5-lotus";
+    owner = "novellized";
+    repo = "fcitx5-nilufer";
     tag = "v${finalAttrs.version}";
     hash = "sha256-zWOnjTaifwhzIk9QLksf/g3EF/SOg1vJmM4IQ5P1+H8=";
   };
@@ -76,8 +76,8 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postFixup = ''
-    patchShebangs $out/share/fcitx5-lotus/settings-gui
-    wrapQtApp $out/bin/fcitx5-lotus-settings \
+    patchShebangs $out/share/fcitx5-nilufer/settings-gui
+    wrapQtApp $out/bin/fcitx5-nilufer-settings \
       --prefix XDG_DATA_DIRS : "${hicolor-icon-theme}/share"
   '';
 

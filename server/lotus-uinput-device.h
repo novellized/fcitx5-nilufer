@@ -23,7 +23,7 @@
 /**
  * @brief Name of the virtual keyboard, identical to the raw setup it replaces.
  */
-inline constexpr std::string_view kLotusUinputName = "Lotus-Uinput-Server";
+inline constexpr std::string_view kLotusUinputName = "Nilufer-Uinput-Server";
 
 /**
  * @brief Vendor id of the virtual keyboard.

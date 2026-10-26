@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Nilüfer Settings
 Comment=Configure Nilüfer Turkish Input Method
-Exec=fcitx5-lotus-settings
-Icon=fcitx-lotus
-StartupWMClass=org.fcitx.Fcitx5.Addon.Lotus.Settings
+Exec=fcitx5-nilufer-settings
+Icon=fcitx-nilufer
+StartupWMClass=org.fcitx.Fcitx5.Addon.Nilufer.Settings
 Terminal=false
 Type=Application
 Categories=Settings;DesktopSettings;

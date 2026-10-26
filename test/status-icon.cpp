@@ -29,15 +29,15 @@ int main(int argc, char** argv) {
     TestInstance            testInstance;
     fcitx::LotusEngine      engine(&testInstance.instance);
     TestInputContext        context(&testInstance.instance);
-    fcitx::InputMethodEntry entry("lotus", "Nilüfer", "tr", "lotus");
+    fcitx::InputMethodEntry entry("nilufer", "Nilüfer", "tr", "nilufer");
     context.focusIn();
     bool                                            ok = true;
 
     const std::array<std::array<const char*, 2>, 3> modes{
         {
-            {"Preedit", "fcitx-lotus"},
-            {"OFF", "fcitx-lotus-off"},
-            {"Emoji Picker", "fcitx-lotus-emoji"},
+            {"Preedit", "fcitx-nilufer"},
+            {"OFF", "fcitx-nilufer-off"},
+            {"Emoji Picker", "fcitx-nilufer-emoji"},
         },
     };
     for (const auto& [mode, base] : modes) {

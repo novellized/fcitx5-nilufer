@@ -8,7 +8,7 @@ target_include_directories(lotus_core_objects PRIVATE
     ${PROJECT_SOURCE_DIR}/common
 )
 target_compile_definitions(lotus_core_objects PRIVATE
-    FCITX5_LOTUS_SETTINGS_PATH="${CMAKE_INSTALL_FULL_BINDIR}/fcitx5-lotus-settings"
+    FCITX5_LOTUS_SETTINGS_PATH="${CMAKE_INSTALL_FULL_BINDIR}/fcitx5-nilufer-settings"
     LOTUS_SERVER_EXECUTABLE="${LOTUS_SERVER_EXECUTABLE}"
     LOTUS_ALT_EXECUTABLE_PREFIX="${LOTUS_ALT_EXECUTABLE_PREFIX}"
 )
@@ -47,12 +47,12 @@ if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.16)
     set(LOTUS_PCH_HEADERS "${LOTUS_PCH_HEADERS}" PARENT_SCOPE)
 endif()
 
-add_library(lotus MODULE lotus.cpp
+add_library(nilufer MODULE lotus.cpp
     $<TARGET_OBJECTS:lotus_core_objects>
 )
-set_target_properties(lotus PROPERTIES OUTPUT_NAME "lotus")
-set_target_properties(lotus PROPERTIES POSITION_INDEPENDENT_CODE ON)
-target_link_libraries(lotus
+set_target_properties(nilufer PROPERTIES OUTPUT_NAME "nilufer")
+set_target_properties(nilufer PROPERTIES POSITION_INDEPENDENT_CODE ON)
+target_link_libraries(nilufer
         lotus_common_executable_path
         Fcitx5::Core
         Fcitx5::Config
@@ -62,22 +62,22 @@ target_link_libraries(lotus
         Pthread::Pthread
 )
 
-target_include_directories(lotus PRIVATE
+target_include_directories(nilufer PRIVATE
     ${PROJECT_BINARY_DIR}
 )
 # Same flags as lotus_core_objects so its prebuilt PCH is reused, not rejected.
-target_compile_definitions(lotus PRIVATE
-    FCITX5_LOTUS_SETTINGS_PATH="${CMAKE_INSTALL_FULL_BINDIR}/fcitx5-lotus-settings"
+target_compile_definitions(nilufer PRIVATE
+    FCITX5_LOTUS_SETTINGS_PATH="${CMAKE_INSTALL_FULL_BINDIR}/fcitx5-nilufer-settings"
     LOTUS_SERVER_EXECUTABLE="${LOTUS_SERVER_EXECUTABLE}"
     LOTUS_ALT_EXECUTABLE_PREFIX="${LOTUS_ALT_EXECUTABLE_PREFIX}"
 )
 if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.16)
-    target_precompile_headers(lotus REUSE_FROM lotus_core_objects)
+    target_precompile_headers(nilufer REUSE_FROM lotus_core_objects)
 endif()
-install(TARGETS lotus DESTINATION "${CMAKE_INSTALL_LIBDIR}/fcitx5")
+install(TARGETS nilufer DESTINATION "${CMAKE_INSTALL_LIBDIR}/fcitx5")
 
-fcitx5_translate_desktop_file(lotus.conf.in lotus.conf)
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lotus.conf" DESTINATION "${CMAKE_INSTALL_DATADIR}/fcitx5/inputmethod")
-configure_file(lotus-addon.conf.in.in lotus-addon.conf.in)
-fcitx5_translate_desktop_file("${CMAKE_CURRENT_BINARY_DIR}/lotus-addon.conf.in" lotus-addon.conf)
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lotus-addon.conf" RENAME lotus.conf DESTINATION "${FCITX_INSTALL_PKGDATADIR}/addon")
+fcitx5_translate_desktop_file(nilufer.conf.in nilufer.conf)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/nilufer.conf" DESTINATION "${CMAKE_INSTALL_DATADIR}/fcitx5/inputmethod")
+configure_file(nilufer-addon.conf.in.in nilufer-addon.conf.in)
+fcitx5_translate_desktop_file("${CMAKE_CURRENT_BINARY_DIR}/nilufer-addon.conf.in" nilufer-addon.conf)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/nilufer-addon.conf" RENAME nilufer.conf DESTINATION "${FCITX_INSTALL_PKGDATADIR}/addon")

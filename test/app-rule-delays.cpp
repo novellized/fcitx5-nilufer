@@ -45,7 +45,7 @@ int main() {
     const char* testName = "fcitx5-lotus-app-rule-delays";
     configureTestPaths(testName);
 
-    const auto rulesFile = std::filesystem::temp_directory_path() / testName / "config/fcitx5/conf/lotus-app-rules.conf";
+    const auto rulesFile = std::filesystem::temp_directory_path() / testName / "config/fcitx5/conf/nilufer-app-rules.conf";
     {
         std::filesystem::create_directories(rulesFile.parent_path());
         std::ofstream file(rulesFile);

@@ -1,7 +1,7 @@
 [InputMethod]
 Name=Nilüfer
-Icon=fcitx-lotus
+Icon=fcitx-nilufer
 Label=TR
 LangCode=tr
-Addon=lotus
+Addon=nilufer
 Configurable=True

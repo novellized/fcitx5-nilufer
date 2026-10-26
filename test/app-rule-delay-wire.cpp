@@ -49,7 +49,7 @@ int main() {
 
     // The mock input context reports the program name "test"; its rule sets the
     // backspace interval to 20 ms and the post delay to 25 ms.
-    const auto rulesFile = std::filesystem::temp_directory_path() / testName / "config/fcitx5/conf/lotus-app-rules.conf";
+    const auto rulesFile = std::filesystem::temp_directory_path() / testName / "config/fcitx5/conf/nilufer-app-rules.conf";
     {
         std::filesystem::create_directories(rulesFile.parent_path());
         std::ofstream file(rulesFile);

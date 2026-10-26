@@ -261,7 +261,7 @@ namespace fcitx {
          * @brief Saves current configuration to disk.
          */
         void saveConfig() {
-            safeSaveAsIni(config_, "conf/lotus.conf");
+            safeSaveAsIni(config_, "conf/nilufer.conf");
         }
 
         /**

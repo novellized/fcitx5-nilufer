@@ -2,8 +2,8 @@
   callPackage,
   inputs,
 }:
-(callPackage ../fcitx5-lotus { }).overrideAttrs (old: {
-  pname = "fcitx5-lotus-head";
+(callPackage ../fcitx5-nilufer { }).overrideAttrs (old: {
+  pname = "fcitx5-nilufer-head";
   version = "0-unstable";
   src = inputs.self;
 })

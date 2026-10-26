@@ -281,7 +281,7 @@ class MacroEditorPage(BaseEditorPage):
                     )
 
             self.table.setRowCount(0)
-            data = self.dbus.get_sub_config_list("lotus-macro", "Macro")
+            data = self.dbus.get_sub_config_list("nilufer-macro", "Macro")
             for item in data:
                 self.upsert_row(item.get("Key", ""), item.get("Value", ""), sort=False)
             self.on_search_changed()
@@ -363,7 +363,7 @@ class MacroEditorPage(BaseEditorPage):
                 continue
             data.append({"Key": key_item.text(), "Value": val_item.text() if val_item else ""})
 
-        if not self.dbus.set_sub_config_list("lotus-macro", "Macro", data):
+        if not self.dbus.set_sub_config_list("nilufer-macro", "Macro", data):
             return False
 
         self.initial_state = self._get_current_state()

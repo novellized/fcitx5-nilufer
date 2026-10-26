@@ -16,7 +16,7 @@ LotusLogger& LotusLogger::instance() {
 
 LotusLogger::LotusLogger(LogLevel level) {
     level_.store(level, std::memory_order_release);
-    openlog("fcitx5-lotus-server", LOG_PID, LOG_DAEMON);
+    openlog("fcitx5-nilufer-server", LOG_PID, LOG_DAEMON);
 }
 
 LotusLogger::~LotusLogger() {

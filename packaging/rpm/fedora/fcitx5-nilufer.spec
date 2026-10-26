@@ -1,4 +1,4 @@
-Name:           fcitx5-lotus
+Name:           fcitx5-nilufer
 Version:        6.0.0
 Release:        1
 Summary:        Turkish Telex input method for fcitx5 (Nilüfer)
@@ -38,7 +38,7 @@ Turkish Telex input method for fcitx5 (Nilüfer)
 %install
 %cmake_install
 %find_lang %{name}
-%py_byte_compile %{__python3} %{buildroot}%{_datadir}/fcitx5-lotus
+%py_byte_compile %{__python3} %{buildroot}%{_datadir}/fcitx5-nilufer
 
 %check
 %ctest
@@ -48,59 +48,59 @@ Turkish Telex input method for fcitx5 (Nilüfer)
 
 %dir %{_datadir}/licenses/%{name}
 %dir %{_modulesloaddir}
-%{_bindir}/fcitx5-lotus-server
-%{_bindir}/fcitx5-lotus-settings
+%{_bindir}/fcitx5-nilufer-server
+%{_bindir}/fcitx5-nilufer-settings
 
-%{_libdir}/fcitx5/liblotus.so
+%{_libdir}/fcitx5/libnilufer.so
 
-%{_modulesloaddir}/fcitx5-lotus.conf
-%{_unitdir}/fcitx5-lotus-server@.service
-%{_sysusersdir}/lotus.conf
-%{_udevrulesdir}/99-lotus.rules
+%{_modulesloaddir}/fcitx5-nilufer.conf
+%{_unitdir}/fcitx5-nilufer-server@.service
+%{_sysusersdir}/nilufer.conf
+%{_udevrulesdir}/99-nilufer.rules
 
-%{_datadir}/fcitx5/addon/lotus.conf
-%{_datadir}/fcitx5/inputmethod/lotus.conf
+%{_datadir}/fcitx5/addon/nilufer.conf
+%{_datadir}/fcitx5/inputmethod/nilufer.conf
 
-%{_datadir}/fcitx5/lotus/
-%{_datadir}/fcitx5-lotus/
-%{_datadir}/applications/org.fcitx.Fcitx5.Addon.Lotus.Settings.desktop
-%{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.Lotus.metainfo.xml
+%{_datadir}/fcitx5/nilufer/
+%{_datadir}/fcitx5-nilufer/
+%{_datadir}/applications/org.fcitx.Fcitx5.Addon.Nilufer.Settings.desktop
+%{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.Nilufer.metainfo.xml
 
-%{_datadir}/icons/hicolor/scalable/apps/*fcitx-lotus*.svg
-%{_datadir}/icons/hicolor/scalable/status/fcitx-lotus*.svg
+%{_datadir}/icons/hicolor/scalable/apps/*fcitx-nilufer*.svg
+%{_datadir}/icons/hicolor/scalable/status/fcitx-nilufer*.svg
 
 %dir %{_datadir}/icons/breeze
 %dir %{_datadir}/icons/breeze/status
 %dir %{_datadir}/icons/breeze/status/22
 %dir %{_datadir}/icons/breeze/status/24
-%{_datadir}/icons/breeze/status/*/fcitx-lotus*.svg
+%{_datadir}/icons/breeze/status/*/fcitx-nilufer*.svg
 
 %dir %{_datadir}/icons/breeze-dark
 %dir %{_datadir}/icons/breeze-dark/status
 %dir %{_datadir}/icons/breeze-dark/status/22
 %dir %{_datadir}/icons/breeze-dark/status/24
-%{_datadir}/icons/breeze-dark/status/*/fcitx-lotus*.svg
+%{_datadir}/icons/breeze-dark/status/*/fcitx-nilufer*.svg
 
 %post
-%systemd_post fcitx5-lotus-server@.service
+%systemd_post fcitx5-nilufer-server@.service
 
 if [ $1 -eq 1 ]; then
-    echo "--- Cấu hình Lotus ---"
+    echo "--- Cấu hình Nilüfer ---"
     echo "Hướng dẫn sau cài đặt:"
     echo "1. Kích hoạt Server cho user của bạn:"
-    echo "   sudo systemctl enable --now fcitx5-lotus-server@\$(whoami).service"
+    echo "   sudo systemctl enable --now fcitx5-nilufer-server@\$(whoami).service"
     echo ""
     echo "2. Cấu hình Fcitx5:"
-    echo "   - Mở 'Fcitx5 Configuration', thêm bộ gõ Lotus"
+    echo "   - Mở 'Fcitx5 Configuration', thêm bộ gõ Nilüfer"
     echo ""
     echo "3. Lưu ý cho Wayland (KDE):"
     echo "   - Hãy chọn 'Fcitx 5' trong phần Virtual Keyboard của hệ thống."
     echo "------------------------------------------------"
 elif [ $1 -eq 2 ]; then
-    echo "--- Cấu hình Lotus ---"
+    echo "--- Cấu hình Nilüfer ---"
     echo "Hướng dẫn sau cập nhật:"
     echo "1. Khởi động lại Server cho user của bạn:"
-    echo "   sudo systemctl restart fcitx5-lotus-server@\$(whoami).service"
+    echo "   sudo systemctl restart fcitx5-nilufer-server@\$(whoami).service"
     echo ""
     echo "2. Cấu hình Fcitx5:"
     echo "   - Mở 'Fcitx5 Configuration', nhấn restart để khởi động lại."
@@ -108,10 +108,10 @@ fi
 
 
 %preun
-%systemd_preun fcitx5-lotus-server@.service
+%systemd_preun fcitx5-nilufer-server@.service
 
 %postun
-%systemd_postun_with_restart fcitx5-lotus-server@.service
+%systemd_postun_with_restart fcitx5-nilufer-server@.service
 
 %changelog
 * Wed Oct 21 2026 Nguyen Hoang Ky <nhktmdzhg@gmail.com> - 6.0.0-1

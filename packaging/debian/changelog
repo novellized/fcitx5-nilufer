@@ -1,4 +1,4 @@
-fcitx5-lotus (6.0.0-1) unstable; urgency=medium
+fcitx5-nilufer (6.0.0-1) unstable; urgency=medium
 
   * Warn when a uinput mode is selected but the uinput server is down
   * Fix bug backspace in preedit mode is commit the buffer

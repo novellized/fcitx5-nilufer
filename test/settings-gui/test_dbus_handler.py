@@ -9,7 +9,7 @@ from unittest import mock
 import _stubs
 from core.dbus_handler import LotusDBusHandler
 
-ADDON_NAME = "fcitx://config/addon/lotus"
+ADDON_NAME = "fcitx://config/addon/nilufer"
 
 
 def _handler(iface):

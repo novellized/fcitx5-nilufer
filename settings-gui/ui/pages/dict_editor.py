@@ -33,7 +33,7 @@ from ui.pages.base_editor import BaseEditorPage
 try:
     from paths import DICTIONARY_PATH
 except ImportError:
-    DICTIONARY_PATH = "/usr/share/fcitx5/lotus/turkish.dict"
+    DICTIONARY_PATH = "/usr/share/fcitx5/nilufer/turkish.dict"
 from ui.pages.dynamic_settings import CardWidget
 
 
@@ -57,8 +57,8 @@ class DictEditorPage(BaseEditorPage):
         # Common locations for fcitx5 pkgdata
         paths = [
             DICTIONARY_PATH,
-            "/usr/share/fcitx5/lotus/turkish.dict",
-            "/usr/local/share/fcitx5/lotus/turkish.dict",
+            "/usr/share/fcitx5/nilufer/turkish.dict",
+            "/usr/local/share/fcitx5/nilufer/turkish.dict",
         ]
         for p in paths:
             if os.path.exists(p):

@@ -1,4 +1,4 @@
-Source: fcitx5-lotus
+Source: fcitx5-nilufer
 Section: utils
 Priority: optional
 Maintainer: Nguyen Hoang Ky <nhktmdzhg@gmail.com>
@@ -20,7 +20,7 @@ Build-Depends: debhelper-compat (= 13),
                python3
 Standards-Version: 4.6.0
 
-Package: fcitx5-lotus
+Package: fcitx5-nilufer
 Architecture: any
 Depends: acl, fcitx5, fcitx5-data, udev, python3-qtpy, python3-dbus, python3-qtpy-pyqt6 | python3-qtpy-pyside6 | python3-qtpy-pyqt5 | python3-pyqt5, ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}
 Description: Turkish Telex input method for fcitx5 (Nilüfer)

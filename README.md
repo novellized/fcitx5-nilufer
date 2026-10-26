@@ -3,7 +3,7 @@
 <a id="readme-top"></a>
 
 <div align="center">
-  <img src="data/fcitx-lotus-README.svg" alt="Nilüfer Logo" width="80" height="80">
+  <img src="data/fcitx-nilufer-README.svg" alt="Nilüfer Logo" width="80" height="80">
 
   <h2 align="center">Nilüfer (fcitx5-nilufer)</h2>
 

@@ -20,10 +20,10 @@ def main():
     """Main execution function."""
     setup_i18n()
     app = QApplication(sys.argv)
-    app.setDesktopFileName("org.fcitx.Fcitx5.Addon.Lotus.Settings")
-    app.setApplicationName("org.fcitx.Fcitx5.Addon.Lotus.Settings")
+    app.setDesktopFileName("org.fcitx.Fcitx5.Addon.Nilufer.Settings")
+    app.setApplicationName("org.fcitx.Fcitx5.Addon.Nilufer.Settings")
     signal.signal(signal.SIGINT, signal.SIG_DFL)
-    app.setWindowIcon(QIcon.fromTheme("fcitx-lotus"))
+    app.setWindowIcon(QIcon.fromTheme("fcitx-nilufer"))
 
     timer = QTimer()
     timer.start(500)

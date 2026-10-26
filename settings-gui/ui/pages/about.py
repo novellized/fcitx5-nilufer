@@ -50,7 +50,7 @@ class AboutPage(QWidget):
 
         # Logo/Icon
         try:
-            pixmap = QIcon.fromTheme("fcitx-lotus").pixmap(80, 80)
+            pixmap = QIcon.fromTheme("fcitx-nilufer").pixmap(80, 80)
             if pixmap.isNull():
                 logo = QLabel("🪷")
                 logo.setStyleSheet("font-size: 64px; margin-bottom: 5px;")

@@ -41,7 +41,7 @@ namespace {
 
     class NotifyLibrary {
       public:
-        NotifyLibrary() : initialised_(notify_init("fcitx5-lotus") != FALSE) {}
+        NotifyLibrary() : initialised_(notify_init("fcitx5-nilufer") != FALSE) {}
 
         ~NotifyLibrary() {
             if (initialised_) {
@@ -78,12 +78,12 @@ void notifyMissingUinputServer() {
         LOTUS_WARN("Cannot initialise libnotify");
         return;
     }
-    constexpr std::string_view kLotusDocsUrl = "https://lotusinputmethod.github.io";
-    std::string                body          = _("Uinput modes need the Lotus uinput server. Enable the server service for your distribution and init system.");
+    constexpr std::string_view kLotusDocsUrl = "https://github.com/novellized/fcitx5-nilufer";
+    std::string                body          = _("Uinput modes need the Nilüfer uinput server. Enable the server service for your distribution and init system.");
     body += '\n';
     body += kLotusDocsUrl;
 
-    NotificationPtr notification{notify_notification_new(_("Lotus: the uinput server is not running"), body.c_str(), "fcitx5-lotus")};
+    NotificationPtr notification{notify_notification_new(_("Nilüfer: the uinput server is not running"), body.c_str(), "fcitx5-nilufer")};
     if (notification == nullptr) {
         LOTUS_WARN("Cannot create the uinput server notification");
         return;

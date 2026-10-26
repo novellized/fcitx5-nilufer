@@ -8,13 +8,13 @@ install(DIRECTORY icons/ DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/"
 # copies of every variant into hicolor status dirs in addition to the
 # breeze/breeze-dark theme dirs installed above.
 set(LOTUS_STATUS_ICONS
-    fcitx-lotus fcitx-lotus-off fcitx-lotus-emoji
-    fcitx-lotus-default fcitx-lotus-default-black
-    fcitx-lotus-off-default fcitx-lotus-off-default-black
-    fcitx-lotus-emoji-default fcitx-lotus-emoji-default-black
-    fcitx-lotus-default-symbolic
-    fcitx-lotus-off-default-symbolic
-    fcitx-lotus-emoji-default-symbolic)
+    fcitx-nilufer fcitx-nilufer-off fcitx-nilufer-emoji
+    fcitx-nilufer-default fcitx-nilufer-default-black
+    fcitx-nilufer-off-default fcitx-nilufer-off-default-black
+    fcitx-nilufer-emoji-default fcitx-nilufer-emoji-default-black
+    fcitx-nilufer-default-symbolic
+    fcitx-nilufer-off-default-symbolic
+    fcitx-nilufer-emoji-default-symbolic)
 
 foreach(ICON ${LOTUS_STATUS_ICONS})
     # status/ — system tray (SVG, renderable by most compositors and SNI hosts)
@@ -23,4 +23,4 @@ foreach(ICON ${LOTUS_STATUS_ICONS})
         RENAME "${ICON}.svg")
 endforeach()
 
-install(FILES dictionaries/turkish.dict DESTINATION "${FCITX_INSTALL_PKGDATADIR}/lotus")
+install(FILES dictionaries/turkish.dict DESTINATION "${FCITX_INSTALL_PKGDATADIR}/nilufer")

@@ -33,7 +33,7 @@ target_link_libraries(lotus_test_pch PRIVATE
     Pthread::Pthread
 )
 target_compile_definitions(lotus_test_pch PRIVATE
-    FCITX5_LOTUS_SETTINGS_PATH="${CMAKE_INSTALL_FULL_BINDIR}/fcitx5-lotus-settings"
+    FCITX5_LOTUS_SETTINGS_PATH="${CMAKE_INSTALL_FULL_BINDIR}/fcitx5-nilufer-settings"
     LOTUS_SERVER_EXECUTABLE="${LOTUS_SERVER_EXECUTABLE}"
     LOTUS_ALT_EXECUTABLE_PREFIX="${LOTUS_ALT_EXECUTABLE_PREFIX}"
 )
@@ -67,7 +67,7 @@ function(add_lotus_headless_test)
     # lotus_test_pch mirrors the executables' flags, so its prebuilt PCH is
     # reused, not rejected.
     target_compile_definitions(${ARG_TARGET} PRIVATE
-        FCITX5_LOTUS_SETTINGS_PATH="${CMAKE_INSTALL_FULL_BINDIR}/fcitx5-lotus-settings"
+        FCITX5_LOTUS_SETTINGS_PATH="${CMAKE_INSTALL_FULL_BINDIR}/fcitx5-nilufer-settings"
         LOTUS_SERVER_EXECUTABLE="${LOTUS_SERVER_EXECUTABLE}"
         LOTUS_ALT_EXECUTABLE_PREFIX="${LOTUS_ALT_EXECUTABLE_PREFIX}"
     )

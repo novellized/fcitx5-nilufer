@@ -5,7 +5,7 @@
    viewBox="0 0 16 16"
    version="1.1"
    id="svg5"
-   sodipodi:docname="fcitx-lotus-README.svg"
+   sodipodi:docname="fcitx-nilufer-README.svg"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -33,7 +33,7 @@
      inkscape:current-layer="svg5" />
   <!-- Phóng to hoa sen 1.2x, tâm xoay tại (24, 24) -->
   <rect
-     style="fill:#ec407a;fill-opacity:1;stroke:#ec407a;stroke-width:0.390244;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1;paint-order:stroke markers fill"
+     style="fill:#e30a17;fill-opacity:1;stroke:#e30a17;stroke-width:0.390244;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1;paint-order:stroke markers fill"
      id="rect1"
      width="15.609756"
      height="15.609756"
@@ -47,45 +47,45 @@
     <path
        d="m 24,35 c -5,-5 -7,-15 0,-22 7,7 5,17 0,22"
        fill="#ffffff"
-       stroke="#c2185b"
+       stroke="#e30a17"
        stroke-width="1"
        transform="rotate(-52,24,35)"
        id="path1"
-       style="stroke:#ec407a;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
+       style="stroke:#e30a17;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
     <!-- Cánh ngoài phải -->
     <path
        d="m 24,35 c -5,-5 -7,-15 0,-22 7,7 5,17 0,22"
        fill="#ffffff"
-       stroke="#c2185b"
+       stroke="#e30a17"
        stroke-width="1"
        transform="rotate(52,24,35)"
        id="path2"
-       style="stroke:#ec407a;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
+       style="stroke:#e30a17;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
     <!-- Cánh trong trái -->
     <path
        d="m 24,35 c -5,-5 -7,-15 0,-22 7,7 5,17 0,22"
        fill="#ffffff"
-       stroke="#c2185b"
+       stroke="#e30a17"
        stroke-width="1"
        transform="rotate(-26,24,35)"
        id="path3"
-       style="stroke:#ec407a;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
+       style="stroke:#e30a17;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
     <!-- Cánh trong phải -->
     <path
        d="m 24,35 c -5,-5 -7,-15 0,-22 7,7 5,17 0,22"
        fill="#ffffff"
-       stroke="#c2185b"
+       stroke="#e30a17"
        stroke-width="1"
        transform="rotate(26,24,35)"
        id="path4"
-       style="stroke:#ec407a;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
+       style="stroke:#e30a17;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
     <!-- Cánh giữa — trên cùng, thêm stroke -->
     <path
        d="m 24,35 c -5,-5 -7,-15 0,-22 7,7 5,17 0,22"
        fill="#ffffff"
-       stroke="#c2185b"
+       stroke="#e30a17"
        stroke-width="1"
        id="path5"
-       style="stroke:#ec407a;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
+       style="stroke:#e30a17;stroke-width:0.976262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>
