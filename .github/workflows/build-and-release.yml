@@ -25,6 +25,8 @@ jobs:
             codename: trixie
           - distro: debian:testing
             codename: forky
+          - distro: debian:testing
+            codename: testing
           - distro: debian:unstable
             codename: sid
           - distro: ubuntu:22.04
