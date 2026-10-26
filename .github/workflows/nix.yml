@@ -42,4 +42,4 @@ jobs:
             accept-flake-config = true
 
       - name: Build source at HEAD
-        run: nix build -L .#packages.x86_64-linux.fcitx5-lotus-head
+        run: nix build -L .#packages.x86_64-linux.fcitx5-nilufer-head

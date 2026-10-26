@@ -193,8 +193,7 @@ namespace fcitx {
         initToggleAction(macroAction_, config_.enableMacro, "nilufer-macro", "document-edit", _("Macro"), _("Macro"), uiManager);
         initToggleAction(capitalizeMacroAction_, config_.capitalizeMacro, "nilufer-capitalizemacro", "format-text-uppercase", _("Capitalize Macro"), _("Capitalize Macro"),
                          uiManager);
-        initToggleAction(autoNonVnRestoreAction_, config_.autoNonVnRestore, "nilufer-autonvnrestore", "edit-undo", _("Auto Restore Invalid Words"), _("Auto Restore"),
-                         uiManager);
+        initToggleAction(autoNonVnRestoreAction_, config_.autoNonVnRestore, "nilufer-autonvnrestore", "edit-undo", _("Auto Restore Invalid Words"), _("Auto Restore"), uiManager);
         initToggleAction(enableDictionaryAction_, config_.enableDictionary, "nilufer-dictionary", "accessories-dictionary", _("Custom Dictionary"), _("Custom Dictionary"),
                          uiManager);
 

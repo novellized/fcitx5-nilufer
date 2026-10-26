@@ -52,19 +52,19 @@ jobs:
           cat > update-shim.nix << 'EOF'
           { pkgs ? import <nixpkgs> { } }:
           {
-            fcitx5-lotus = pkgs.callPackage ./nix/packages/fcitx5-lotus { };
+            fcitx5-nilufer = pkgs.callPackage ./nix/packages/fcitx5-nilufer { };
           }
           EOF
 
           nix run nixpkgs#nix-update -- \
             --file ./update-shim.nix \
-            fcitx5-lotus \
+            fcitx5-nilufer \
             --version="${{ steps.version.outputs.version }}"
 
           rm update-shim.nix
 
       - name: Build to verify
-        run: nix build -L --no-link .#packages.x86_64-linux.fcitx5-lotus
+        run: nix build -L --no-link .#packages.x86_64-linux.fcitx5-nilufer
 
       - name: Check for changes
         id: git-check
@@ -80,7 +80,7 @@ jobs:
         uses: peter-evans/create-pull-request@v8
         with:
           base: main
-          commit-message: "nix: update fcitx5-lotus to ${{ steps.version.outputs.version }}"
+          commit-message: "nix: update fcitx5-nilufer to ${{ steps.version.outputs.version }}"
           title: "nix: update to v${{ steps.version.outputs.version }}"
           body: |
             Tự động cập nhật version và hash cho Nix sau khi release `v${{ steps.version.outputs.version }}`.

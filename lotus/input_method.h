@@ -16,7 +16,7 @@ namespace lotus {
         std::vector<char32_t> keys;
     };
 
-    InputMethod parseInputMethod(const std::unordered_map<std::string, std::string>& definition);
+    InputMethod        parseInputMethod(const std::unordered_map<std::string, std::string>& definition);
     const InputMethod& cachedInputMethod(InputMethodId id);
 
 } // namespace lotus

@@ -67,14 +67,14 @@ jobs:
         run: |
           pacman -Syu --noconfirm base-devel clang cmake ninja extra-cmake-modules libuv git libinput libevdev libnotify systemd-libs python
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git config --global --add safe.directory "$GITHUB_WORKSPACE/fcitx5-lotus"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/fcitx5-nilufer"
           git config --global --add safe.directory "$GITHUB_WORKSPACE/fcitx5"
       - name: Install dependencies (musl)
         if: matrix.install == 'alpine'
         run: |
           apk add --no-cache build-base cmake ninja extra-cmake-modules libuv-dev git libinput-dev libevdev-dev libnotify-dev python3 zlib-dev gettext-dev util-linux-dev tar clang linux-headers
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git config --global --add safe.directory "$GITHUB_WORKSPACE/fcitx5-lotus"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/fcitx5-nilufer"
           git config --global --add safe.directory "$GITHUB_WORKSPACE/fcitx5"
       - uses: actions/checkout@v7
         with:
@@ -95,30 +95,30 @@ jobs:
             -DENABLE_DBUS=Off -DENABLE_SERVER=Off -DUSE_SYSTEMD=Off -DENABLE_EMOJI=On
       - uses: actions/checkout@v7
         with:
-          path: fcitx5-lotus
+          path: fcitx5-nilufer
           fetch-depth: 0
       - name: Init CodeQL
         if: matrix.distro == 'glibc' && matrix.compiler == 'gcc'
         uses: github/codeql-action/init@v4.39.0
         with:
           languages: cpp
-          source-root: fcitx5-lotus
-      - name: Build and Install fcitx5-lotus
+          source-root: fcitx5-nilufer
+      - name: Build and Install fcitx5-nilufer
         uses: fcitx/github-actions@cmake
         with:
-          path: fcitx5-lotus
+          path: fcitx5-nilufer
           shell: ${{ matrix.shell }}
           cmake-option: -DBUILD_TESTING=ON
       - name: Discover tests
         run: |
-          ctest --test-dir fcitx5-lotus/build -N
+          ctest --test-dir fcitx5-nilufer/build -N
       - name: Test
         run: |
-          ctest --test-dir fcitx5-lotus/build --output-on-failure --no-tests=error
+          ctest --test-dir fcitx5-nilufer/build --output-on-failure --no-tests=error
       - name: Check clang-tidy
         if: matrix.distro == 'glibc' && matrix.compiler == 'clang'
         run: |
-          cd fcitx5-lotus
+          cd fcitx5-nilufer
           base="${{ github.event.pull_request.base.sha || github.event.before }}"
           if git rev-parse --verify --quiet "${base}^{commit}" >/dev/null 2>&1; then
               changed="$(git diff --name-only "$base" HEAD)"
@@ -142,7 +142,7 @@ jobs:
         if: matrix.distro == 'glibc' && matrix.compiler == 'gcc'
         uses: github/codeql-action/analyze@v4.39.0
         with:
-          checkout_path: fcitx5-lotus
+          checkout_path: fcitx5-nilufer
 
   python-lint:
     name: Python lint

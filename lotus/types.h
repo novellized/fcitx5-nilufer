@@ -72,14 +72,14 @@ namespace lotus {
     using EngineFlags = FlagSet<EngineFlag>;
 
     enum class W2uMode : uint8_t {
-        Disabled = 0,
-        NonStart = 1,
+        Disabled   = 0,
+        NonStart   = 1,
         Everywhere = 2,
     };
 
     enum class BracketTransformMode : uint8_t {
-        Disabled = 0,
-        NonStart = 1,
+        Disabled   = 0,
+        NonStart   = 1,
         Everywhere = 2,
     };
 
@@ -98,7 +98,7 @@ namespace lotus {
 
     inline constexpr KeyStates kInvalidStates = KeyState::Ctrl | KeyState::Mod1 | KeyState::Ignored | KeyState::Super | KeyState::Hyper | KeyState::Meta;
 
-    constexpr KeyStates keyStatesFromBits(uint32_t bits) {
+    constexpr KeyStates        keyStatesFromBits(uint32_t bits) {
         return KeyStates{bits};
     }
 

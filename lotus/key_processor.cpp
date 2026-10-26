@@ -22,7 +22,7 @@ namespace lotus {
                 case U'O': return U'Ö';
                 case U'i': return U'ı';
                 case U'I': return U'İ';
-                default:   return 0;
+                default: return 0;
             }
         }
 
@@ -40,7 +40,7 @@ namespace lotus {
                 case U'Ö': return U'O';
                 case U'ı': return U'i';
                 case U'İ': return U'I';
-                default:   return 0;
+                default: return 0;
             }
         }
 
@@ -87,8 +87,7 @@ namespace lotus {
     }
 
     bool KeyProcessor::canProcessKey(uint32_t keyVal) const {
-        if (keyVal == kFcitxBackSpace || keyVal == kFcitxSpace ||
-            keyVal == kFcitxReturn || keyVal == kFcitxKP_Enter || keyVal == kFcitxTab) {
+        if (keyVal == kFcitxBackSpace || keyVal == kFcitxSpace || keyVal == kFcitxReturn || keyVal == kFcitxKP_Enter || keyVal == kFcitxTab) {
             return true;
         }
         if (keyVal >= 32 && keyVal < 127) {
@@ -106,7 +105,7 @@ namespace lotus {
 
     std::string KeyProcessor::formatTime(const std::string& layout) {
         std::time_t now = std::time(nullptr);
-        std::tm tmNow{};
+        std::tm     tmNow{};
 #if defined(_WIN32)
         localtime_s(&tmNow, &now);
 #else
@@ -150,11 +149,16 @@ namespace lotus {
     }
 
     bool KeyProcessor::isWordBreak(char32_t ch) const {
-        if (ch == U' ' || ch == U'\t' || ch == U'\n' || ch == U'\r') return true;
-        if (ch >= 33 && ch <= 47) return true;   // ! " # $ % & ' ( ) * + , - . /
-        if (ch >= 58 && ch <= 64) return true;   // : ; < = > ? @
-        if (ch >= 91 && ch <= 96) return true;   // [ \ ] ^ _ `
-        if (ch >= 123 && ch <= 126) return true; // { | } ~
+        if (ch == U' ' || ch == U'\t' || ch == U'\n' || ch == U'\r')
+            return true;
+        if (ch >= 33 && ch <= 47)
+            return true; // ! " # $ % & ' ( ) * + , - . /
+        if (ch >= 58 && ch <= 64)
+            return true; // : ; < = > ? @
+        if (ch >= 91 && ch <= 96)
+            return true; // [ \ ] ^ _ `
+        if (ch >= 123 && ch <= 126)
+            return true; // { | } ~
         return false;
     }
 
@@ -165,7 +169,8 @@ namespace lotus {
 
         bool allUpper = true;
         for (char32_t ch : trigger) {
-            if (case_map::isLower(ch)) allUpper = false;
+            if (case_map::isLower(ch))
+                allUpper = false;
         }
 
         if (allUpper && !trigger.empty()) {
@@ -179,17 +184,9 @@ namespace lotus {
         for (char32_t ch : text) {
             char32_t base = turkishBaseOf(ch);
             if (base != 0) {
-                nodes_.push_back(KeyNode{
-                    .displayChar = ch,
-                    .rawBaseChar = base,
-                    .isTransformed = true
-                });
+                nodes_.push_back(KeyNode{.displayChar = ch, .rawBaseChar = base, .isTransformed = true});
             } else {
-                nodes_.push_back(KeyNode{
-                    .displayChar = ch,
-                    .rawBaseChar = ch,
-                    .isTransformed = false
-                });
+                nodes_.push_back(KeyNode{.displayChar = ch, .rawBaseChar = ch, .isTransformed = false});
             }
         }
         rebuildPreedit();
@@ -290,50 +287,34 @@ namespace lotus {
                 KeyNode& last = nodes_.back();
                 if (last.isTransformed) {
                     // Revert transformation: e.g. ç -> cw, Ç -> Cw / CW
-                    last.displayChar = last.rawBaseChar;
+                    last.displayChar   = last.rawBaseChar;
                     last.isTransformed = false;
-                    nodes_.push_back(KeyNode{
-                        .displayChar = keyChar,
-                        .rawBaseChar = keyChar,
-                        .isTransformed = false
-                    });
+                    nodes_.push_back(KeyNode{.displayChar = keyChar, .rawBaseChar = keyChar, .isTransformed = false});
                     rebuildPreedit();
                     return true;
                 } else {
                     char32_t transformed = transformTurkish(last.displayChar, keyChar);
                     if (transformed != 0) {
-                        last.rawBaseChar = last.displayChar;
-                        last.displayChar = transformed;
+                        last.rawBaseChar   = last.displayChar;
+                        last.displayChar   = transformed;
                         last.isTransformed = true;
                         rebuildPreedit();
                         return true;
                     } else {
-                        nodes_.push_back(KeyNode{
-                            .displayChar = keyChar,
-                            .rawBaseChar = keyChar,
-                            .isTransformed = false
-                        });
+                        nodes_.push_back(KeyNode{.displayChar = keyChar, .rawBaseChar = keyChar, .isTransformed = false});
                         rebuildPreedit();
                         return true;
                     }
                 }
             } else {
-                nodes_.push_back(KeyNode{
-                    .displayChar = keyChar,
-                    .rawBaseChar = keyChar,
-                    .isTransformed = false
-                });
+                nodes_.push_back(KeyNode{.displayChar = keyChar, .rawBaseChar = keyChar, .isTransformed = false});
                 rebuildPreedit();
                 return true;
             }
         }
 
         // Regular character
-        nodes_.push_back(KeyNode{
-            .displayChar = keyChar,
-            .rawBaseChar = keyChar,
-            .isTransformed = false
-        });
+        nodes_.push_back(KeyNode{.displayChar = keyChar, .rawBaseChar = keyChar, .isTransformed = false});
         rebuildPreedit();
         return true;
     }

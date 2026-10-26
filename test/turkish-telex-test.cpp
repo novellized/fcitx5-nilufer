@@ -9,19 +9,15 @@
 void testTurkishTelex() {
     lotus::KeyProcessor kp;
 
-    auto typeStr = [&](const std::string& input) {
+    auto                typeStr = [&](const std::string& input) {
         for (char c : input) {
             kp.processKey(static_cast<uint32_t>(c), {});
         }
     };
 
-    auto getPreeditUtf8 = [&]() {
-        return lotus::utf8::encode(kp.preedit());
-    };
+    auto getPreeditUtf8 = [&]() { return lotus::utf8::encode(kp.preedit()); };
 
-    auto getCommitUtf8 = [&]() {
-        return lotus::utf8::encode(kp.takeCommit());
-    };
+    auto getCommitUtf8 = [&]() { return lotus::utf8::encode(kp.takeCommit()); };
 
     // Test 1: Single letter transformations (lowercase)
     {

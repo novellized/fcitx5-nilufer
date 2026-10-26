@@ -75,14 +75,14 @@ int runConfigEnumNames() {
 
     check("charset names", fcitx::CharsetToString(fcitx::Charset::Unicode) == "Unicode");
     check("input method names",
-          fcitx::InputMethodIdToString(fcitx::InputMethodId::TurkishTelex) == "Turkish Telex" &&
-          fcitx::InputMethodIdToString(fcitx::InputMethodId::Custom) == "Custom");
+          fcitx::InputMethodIdToString(fcitx::InputMethodId::TurkishTelex) == "Turkish Telex" && fcitx::InputMethodIdToString(fcitx::InputMethodId::Custom) == "Custom");
 
     constexpr std::array<std::string_view, lotus::kCharsetCount> kExpectedCharsets = {
         "Unicode",
     };
     constexpr std::array<std::string_view, lotus::kInputMethodCount> kExpectedInputMethods = {
-        "Turkish Telex", "Custom",
+        "Turkish Telex",
+        "Custom",
     };
     for (std::size_t i = 0; i < kExpectedCharsets.size(); ++i) {
         check("charset config name", fcitx::CharsetToString(static_cast<fcitx::Charset>(i)) == kExpectedCharsets.at(i));

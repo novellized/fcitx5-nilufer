@@ -163,7 +163,7 @@ namespace fcitx {
         OptionWithAnnotation<Charset, EnumAnnotation> outputCharset{this, "OutputCharset", _("Output Charset"), Charset::Unicode}; KeyListOption modeMenuKey{
             this, "ModeMenuKey", _("Mode Menu Hotkey"), {Key("grave")}, KeyListConstrain({KeyConstrainFlag::AllowModifierLess, KeyConstrainFlag::AllowModifierOnly})};
         KeyListOption cycleModeKey{this, "CycleModeKey", _("Cycle Mode Hotkey"), {}, KeyListConstrain({KeyConstrainFlag::AllowModifierLess, KeyConstrainFlag::AllowModifierOnly})};
-        SubConfigOption                                                                        appRules{this, "AppRules", _("App Rules"), "fcitx://config/addon/nilufer/app_rules"};
+        SubConfigOption appRules{this, "AppRules", _("App Rules"), "fcitx://config/addon/nilufer/app_rules"};
 
         Option<bool> spellCheck{this, "SpellCheck", _("Enable Spell Check Using Dictionary"), true}; Option<bool> enableMacro{this, "EnableMacro", _("Enable Macro"), true};
         Option<bool>                                                                           capitalizeMacro{this, "CapitalizeMacro", _("Capitalize Macro"), true};

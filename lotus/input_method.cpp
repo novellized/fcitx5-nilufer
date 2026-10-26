@@ -9,7 +9,7 @@ namespace lotus {
     }
 
     const InputMethod& cachedInputMethod(InputMethodId) {
-        static const InputMethod im{ .keys = {U'w', U'W'} };
+        static const InputMethod im{.keys = {U'w', U'W'}};
         return im;
     }
 

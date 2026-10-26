@@ -107,9 +107,7 @@ class AboutPage(QWidget):
         btn_bug.setFixedWidth(200)
         btn_bug.clicked.connect(
             lambda: QDesktopServices.openUrl(
-                QUrl(
-                    "https://github.com/novellized/fcitx5-nilufer/issues/new"
-                )
+                QUrl("https://github.com/novellized/fcitx5-nilufer/issues/new")
             )
         )
 
@@ -118,9 +116,7 @@ class AboutPage(QWidget):
         btn_feature.setFixedWidth(200)
         btn_feature.clicked.connect(
             lambda: QDesktopServices.openUrl(
-                QUrl(
-                    "https://github.com/novellized/fcitx5-nilufer/issues/new"
-                )
+                QUrl("https://github.com/novellized/fcitx5-nilufer/issues/new")
             )
         )
 

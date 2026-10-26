@@ -16,7 +16,7 @@ namespace lotus::case_map {
             case U'Ü': return U'ü';
             case U'Ö': return U'ö';
             case U'İ': return U'i'; // Turkish capital I with dot -> i
-            default:   return codePoint;
+            default: return codePoint;
         }
     }
 
@@ -34,37 +34,35 @@ namespace lotus::case_map {
             case U'ü': return U'Ü';
             case U'ö': return U'Ö';
             case U'ı': return U'I'; // Turkish dotless ı -> I
-            default:   return codePoint;
+            default: return codePoint;
         }
     }
 
     bool isUpper(char32_t codePoint) {
-        if (codePoint >= U'A' && codePoint <= U'Z') return true;
+        if (codePoint >= U'A' && codePoint <= U'Z')
+            return true;
         switch (codePoint) {
             case U'Ç':
             case U'Ş':
             case U'Ğ':
             case U'Ü':
             case U'Ö':
-            case U'İ':
-                return true;
-            default:
-                return false;
+            case U'İ': return true;
+            default: return false;
         }
     }
 
     bool isLower(char32_t codePoint) {
-        if (codePoint >= U'a' && codePoint <= U'z') return true;
+        if (codePoint >= U'a' && codePoint <= U'z')
+            return true;
         switch (codePoint) {
             case U'ç':
             case U'ş':
             case U'ğ':
             case U'ü':
             case U'ö':
-            case U'ı':
-                return true;
-            default:
-                return false;
+            case U'ı': return true;
+            default: return false;
         }
     }
 
