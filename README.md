@@ -131,6 +131,7 @@ Nilüfer is adapted from and proudly built upon the modern C++20 architecture of
 
 - **Nguyen Hoang Ky** ([@nhktmdzhg](https://github.com/nhktmdzhg))
 - **Vo Ngo Hoang Thanh** ([@thanhpy2009](https://github.com/thanhpy2009))
+- **Huynh Thien Loc** ([@hthienloc](https://github.com/hthienloc)) (for original logo)
 - **Weng Xuetian (CSSlayer)** ([@csslayer](https://github.com/wengxt))
 - All contributors to the [LotusInputMethod/fcitx5-lotus](https://github.com/LotusInputMethod/fcitx5-lotus) project.
 

@@ -131,6 +131,7 @@ Nilüfer được phát triển và kế thừa trực tiếp từ nền tảng 
 
 - **Nguyễn Hoàng Kỳ** ([@nhktmdzhg](https://github.com/nhktmdzhg))
 - **Võ Ngô Hoàng Thành** ([@thanhpy2009](https://github.com/thanhpy2009))
+- **Huỳnh Thiện Lộc** ([@hthienloc](https://github.com/hthienloc)) (cho phần logo gốc)
 - **Weng Xuetian (CSSlayer)** ([@csslayer](https://github.com/wengxt))
 - Toàn thể các lập trình viên và thành viên đã đóng góp cho dự án [LotusInputMethod/fcitx5-lotus](https://github.com/LotusInputMethod/fcitx5-lotus).
 
