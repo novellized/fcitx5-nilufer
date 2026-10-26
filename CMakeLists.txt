@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(fcitx5-nilufer VERSION 6.0.0)
+project(fcitx5-nilufer VERSION 1.6.0)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(BUILD_TESTING "Build Nilufer tests" OFF)
 

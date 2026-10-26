@@ -29,7 +29,7 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "fcitx5-nilufer";
-  version = "6.0.0";
+  version = "1.6.0";
 
   src = fetchFromGitHub {
     owner = "novellized";

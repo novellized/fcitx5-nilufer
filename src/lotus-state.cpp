@@ -74,15 +74,10 @@ namespace fcitx {
             return;
         lotus::Options option = {
             .autoNonVnRestore    = *engine_.config().autoNonVnRestore,
-            .ddFreeStyle         = *engine_.config().ddFreeStyle,
             .macroEnabled        = *engine_.config().enableMacro,
             .autoCapitalizeMacro = *engine_.config().capitalizeMacro,
             .spellCheckWithDicts = *engine_.config().spellCheck,
-            .modernStyle         = *engine_.config().modernStyle,
-            .freeMarking         = *engine_.config().freeMarking,
             .outputCharset       = *engine_.config().outputCharset,
-            .w2u                 = *engine_.config().w2u,
-            .bracketTransform    = *engine_.config().bracketTransform,
             .timeFormat          = *engine_.config().timeFormat,
             .dateFormat          = *engine_.config().dateFormat,
         };

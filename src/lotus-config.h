@@ -32,19 +32,6 @@ namespace fcitx {
                                      N_("Uinput (Select)"));
 
     /**
-     * @brief W2U mode for w to ư conversion, shared with the engine (lotus::W2uMode).
-     */
-    using lotus::W2uMode;
-    FCITX_CONFIG_ENUM_NAME_WITH_I18N(W2uMode, N_("Disabled"), N_("Non-Start"), N_("Everywhere"));
-
-    /**
-     * @brief Bracket transform mode for [ -> ơ, ] -> ư conversion, shared with the engine
-     *        (lotus::BracketTransformMode).
-     */
-    using lotus::BracketTransformMode;
-    FCITX_CONFIG_ENUM_NAME_WITH_I18N(BracketTransformMode, N_("Disabled"), N_("Non-Start"), N_("Everywhere"));
-
-    /**
      * @brief Modifier that toggles macro skip for the next word.
      */
     enum class MacroSkipTriggerModifier : std::uint8_t {
@@ -176,10 +163,7 @@ namespace fcitx {
         OptionWithAnnotation<Charset, EnumAnnotation> outputCharset{this, "OutputCharset", _("Output Charset"), Charset::Unicode}; KeyListOption modeMenuKey{
             this, "ModeMenuKey", _("Mode Menu Hotkey"), {Key("grave")}, KeyListConstrain({KeyConstrainFlag::AllowModifierLess, KeyConstrainFlag::AllowModifierOnly})};
         KeyListOption cycleModeKey{this, "CycleModeKey", _("Cycle Mode Hotkey"), {}, KeyListConstrain({KeyConstrainFlag::AllowModifierLess, KeyConstrainFlag::AllowModifierOnly})};
-        SubConfigOption                                                                appRules{this, "AppRules", _("App Rules"), "fcitx://config/addon/nilufer/app_rules"};
-        OptionWithAnnotation<W2uMode, W2uModeI18NAnnotation>                           w2u{this, "W2U", _("Type w to Produce ư"), W2uMode::NonStart};
-        OptionWithAnnotation<BracketTransformMode, BracketTransformModeI18NAnnotation> bracketTransform{this, "BracketTransform", _("Type [ -> ơ, ] -> ư, { -> Ơ, } -> Ư"),
-                                                                                                        BracketTransformMode::Disabled};
+        SubConfigOption                                                                        appRules{this, "AppRules", _("App Rules"), "fcitx://config/addon/nilufer/app_rules"};
 
         Option<bool> spellCheck{this, "SpellCheck", _("Enable Spell Check Using Dictionary"), true}; Option<bool> enableMacro{this, "EnableMacro", _("Enable Macro"), true};
         Option<bool>                                                                           capitalizeMacro{this, "CapitalizeMacro", _("Capitalize Macro"), true};
@@ -189,10 +173,7 @@ namespace fcitx {
         Option<bool>        doubleSpaceToPeriod{this, "DoubleSpaceToPeriod", _("Double Space to Period"), false};
         Option<bool>        doubleHyphenToEmDash{this, "DoubleHyphenToEmDash", _("Double Hyphen to Em-Dash (--)"), false};
         Option<bool>        autoNonVnRestore{this, "AutoNonVnRestore", _("Auto Restore Invalid Words"), true};
-        Option<bool>        modernStyle{this, "ModernStyle", _("Use oà, uý (Instead Of òa, úy)"), true};
-        Option<bool>        freeMarking{this, "FreeMarking", _("Allow Type With More Freedom"), true};
-        Option<bool>        ddFreeStyle{this, "DdFreeStyle", _("Allow dd To Produce đ When Auto Restore Invalid Words Is On"), true};
-        Option<bool>        useLotusIcons{this, "UseLotusIcons", _("Use Lotus Status Icons"), false};
+        Option<bool>        useLotusIcons{this, "UseLotusIcons", _("Use Nilüfer Status Icons"), false};
 
         Option<bool>        enableDictionary{this, "EnableDictionary", _("Custom Dictionary"), false};
         Option<bool>        enableCustomKeymap{this, "EnableCustomKeymap", _("Custom Keymap"), false};

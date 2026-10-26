@@ -111,7 +111,7 @@ class DictEditorPage(BaseEditorPage):
         # 1. Input Row (Top)
         input_layout = QHBoxLayout()
         self.input_word = QLineEdit()
-        self.input_word.setPlaceholderText(_("Word (e.g. khongdau)"))
+        self.input_word.setPlaceholderText(_("Word (e.g. merhaba)"))
         self.input_word.setClearButtonEnabled(True)
         self.input_word.returnPressed.connect(self.on_add)
 

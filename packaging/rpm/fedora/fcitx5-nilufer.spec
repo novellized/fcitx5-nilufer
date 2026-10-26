@@ -1,5 +1,5 @@
 Name:           fcitx5-nilufer
-Version:        6.0.0
+Version:        1.6.0
 Release:        1
 Summary:        Turkish Telex input method for fcitx5 (Nilüfer)
 License:        GPL-3.0-or-later
@@ -114,7 +114,7 @@ fi
 %systemd_postun_with_restart fcitx5-nilufer-server@.service
 
 %changelog
-* Wed Oct 21 2026 Nguyen Hoang Ky <nhktmdzhg@gmail.com> - 6.0.0-1
+* Wed Oct 21 2026 Nguyen Hoang Ky <nhktmdzhg@gmail.com> - 1.6.0-1
 - Warn when a uinput mode is selected but the uinput server is down
 - Fix bug backspace in preedit mode is commit the buffer
 - Fix bug lost replacement backspace when client is focus out

@@ -97,7 +97,6 @@ class LocalDictPathTests(unittest.TestCase):
 class HelpersCatalogTests(unittest.TestCase):
     def test_documented_setting_keys_are_covered(self):
         for key in (
-            "FreeMarking",
             "CapitalizeMacro",
             "AutoNonVnRestore",
             "EnableMacroInOffMode",
@@ -173,7 +172,7 @@ class SetAddButtonModeTests(unittest.TestCase):
 class AddHelpIconTests(unittest.TestCase):
     def test_known_key_adds_icon(self):
         layout = QHBoxLayout()
-        icon = add_help_icon(layout, "FreeMarking")
+        icon = add_help_icon(layout, "AutoNonVnRestore")
         self.assertIsInstance(icon, HelpIcon)
         self.assertEqual(layout.count(), 1)
 

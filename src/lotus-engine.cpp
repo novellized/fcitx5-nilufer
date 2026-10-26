@@ -193,7 +193,7 @@ namespace fcitx {
         initToggleAction(macroAction_, config_.enableMacro, "nilufer-macro", "document-edit", _("Macro"), _("Macro"), uiManager);
         initToggleAction(capitalizeMacroAction_, config_.capitalizeMacro, "nilufer-capitalizemacro", "format-text-uppercase", _("Capitalize Macro"), _("Capitalize Macro"),
                          uiManager);
-        initToggleAction(autoNonVnRestoreAction_, config_.autoNonVnRestore, "nilufer-autonvnrestore", "edit-undo", _("Auto Restore Invalid Words"), _("Auto Non-VN Restore"),
+        initToggleAction(autoNonVnRestoreAction_, config_.autoNonVnRestore, "nilufer-autonvnrestore", "edit-undo", _("Auto Restore Invalid Words"), _("Auto Restore"),
                          uiManager);
         initToggleAction(enableDictionaryAction_, config_.enableDictionary, "nilufer-dictionary", "accessories-dictionary", _("Custom Dictionary"), _("Custom Dictionary"),
                          uiManager);
@@ -347,7 +347,7 @@ namespace fcitx {
         updateAction(nullptr, *spellCheckAction_, config_.spellCheck, _("Spell Check"));
         updateAction(nullptr, *macroAction_, config_.enableMacro, _("Macro"));
         updateAction(nullptr, *capitalizeMacroAction_, config_.capitalizeMacro, _("Capitalize Macro"));
-        updateAction(nullptr, *autoNonVnRestoreAction_, config_.autoNonVnRestore, _("Auto Non-VN Restore"));
+        updateAction(nullptr, *autoNonVnRestoreAction_, config_.autoNonVnRestore, _("Auto Restore"));
         updateAction(nullptr, *enableDictionaryAction_, config_.enableDictionary, _("Custom Dictionary"));
     }
 

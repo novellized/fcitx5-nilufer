@@ -6,7 +6,7 @@ xgettext \
 --keyword=_ \
 --keyword=N_ \
 -o /tmp/nilufer-cpp.pot \
-$(find . \( -name "*.cpp" -o -name "*.h" \))
+$(find . -not -path "./build/*" \( -name "*.cpp" -o -name "*.h" \))
 
 xgettext \
 --language=appdata \
@@ -20,7 +20,7 @@ xgettext \
 --keyword=_ \
 --keyword=N_ \
 -o /tmp/nilufer-python.pot \
-$(find . -name "*.py")
+$(find . -not -path "./build/*" -name "*.py")
 
 xgettext \
 --language=Desktop \

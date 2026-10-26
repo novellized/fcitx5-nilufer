@@ -177,11 +177,11 @@ class MacroEditorPage(BaseEditorPage):
         # 1. Input Row (Top)
         input_layout = QHBoxLayout()
         self.input_key = QLineEdit()
-        self.input_key.setPlaceholderText(_("Abbreviation (e.g. kg)"))
+        self.input_key.setPlaceholderText(_("Abbreviation (e.g. tc)"))
         self.input_key.setClearButtonEnabled(True)
 
         self.input_val = QLineEdit()
-        self.input_val.setPlaceholderText(_("Full text (e.g. khô gà)"))
+        self.input_val.setPlaceholderText(_("Full text (e.g. Türkiye Cumhuriyeti)"))
         self.input_val.setClearButtonEnabled(True)
         self.input_val.returnPressed.connect(self.on_add)
 
