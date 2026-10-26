@@ -189,7 +189,6 @@ class DictEditorPage(BaseEditorPage):
                         ).format(e),
                     )
 
-            self._rebuild_table()
             self.initial_state = self._get_current_state()
         finally:
             self.blockSignals(False)
@@ -200,22 +199,26 @@ class DictEditorPage(BaseEditorPage):
         """Rebuilds the table based on self.words or filtered_words."""
         display_words = filtered_words if filtered_words is not None else self.words
 
-        num_cols = 3
-        num_rows = (len(display_words) + num_cols - 1) // num_cols
-        self.table.setRowCount(num_rows)
+        self.table.setUpdatesEnabled(False)
+        try:
+            num_cols = 3
+            num_rows = (len(display_words) + num_cols - 1) // num_cols
+            self.table.setRowCount(num_rows)
 
-        for i, word in enumerate(display_words):
-            row = i // num_cols
-            col = i % num_cols
-            item = QTableWidgetItem(word)
-            self.table.setItem(row, col, item)
-            self._apply_cell_highlight(item, word)
+            for i, word in enumerate(display_words):
+                row = i // num_cols
+                col = i % num_cols
+                item = QTableWidgetItem(word)
+                self.table.setItem(row, col, item)
+                self._apply_cell_highlight(item, word)
 
-        # Clear remaining cells in the last row
-        for i in range(len(display_words), num_rows * num_cols):
-            row = i // num_cols
-            col = i % num_cols
-            self.table.setItem(row, col, QTableWidgetItem(""))
+            # Clear remaining cells in the last row
+            for i in range(len(display_words), num_rows * num_cols):
+                row = i // num_cols
+                col = i % num_cols
+                self.table.setItem(row, col, QTableWidgetItem(""))
+        finally:
+            self.table.setUpdatesEnabled(True)
 
     def restore_defaults(self):
         """Resets dictionary to default."""
@@ -306,15 +309,13 @@ class DictEditorPage(BaseEditorPage):
 
     def _apply_cell_highlight(self, item: QTableWidgetItem, word: str):
         """Applies red background and warning icon to items with invalid words."""
-        is_invalid = self._is_invalid_word(word)
-        bg_color = Qt.transparent
-        tooltip = ""
-        icon = QIcon()
-        if is_invalid:
-            bg_color = QColor(Qt.red)
-            bg_color.setAlpha(60)
-            icon = QIcon.fromTheme("dialog-warning")
-            tooltip = _("Warning: Dictionary words should not contain spaces.")
+        if not self._is_invalid_word(word):
+            return
+
+        bg_color = QColor(Qt.red)
+        bg_color.setAlpha(60)
+        icon = QIcon.fromTheme("dialog-warning")
+        tooltip = _("Warning: Dictionary words should not contain spaces.")
 
         item.setBackground(bg_color)
         item.setToolTip(tooltip)
