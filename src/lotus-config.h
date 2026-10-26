@@ -58,7 +58,7 @@ namespace fcitx {
      * @brief Output charsets, shared with the engine (lotus::data::Charset).
      */
     using lotus::Charset;
-    FCITX_CONFIG_ENUM_NAME(Charset, "Unicode");
+    FCITX_CONFIG_ENUM_NAME(Charset, "Unicode"); // NOLINT
 
     /**
      * @brief Input methods, shared with the engine (lotus::data::InputMethodId).

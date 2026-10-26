@@ -191,7 +191,7 @@ void testTurkishTelex() {
         assert(getPreeditUtf8() == "cw");
     }
 
-    std::cout << "All Turkish Telex tests PASSED successfully!" << std::endl;
+    std::cout << "All Turkish Telex tests PASSED successfully!\n";
 }
 
 int main() {

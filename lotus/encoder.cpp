@@ -3,7 +3,7 @@
 
 namespace lotus {
 
-    std::string encode(Charset, std::u32string_view text) {
+    std::string encode(Charset /*charset*/, std::u32string_view text) {
         return utf8::encode(text);
     }
 

@@ -1,6 +1,8 @@
 #include "key_processor.h"
 
 #include "case_map.h"
+#include <array>
+#include <cstdio>
 #include <ctime>
 
 namespace lotus {
@@ -48,7 +50,7 @@ namespace lotus {
 
     KeyProcessor::KeyProcessor() = default;
 
-    KeyProcessor::KeyProcessor(InputMethod, bool) {}
+    KeyProcessor::KeyProcessor(const InputMethod& /*inputMethod*/, bool /*spellCheckWithDictsDefault*/) {}
 
     void KeyProcessor::setOptions(const Options& options) {
         options_ = options;
@@ -86,7 +88,7 @@ namespace lotus {
         return !states.intersects(kInvalidStates);
     }
 
-    bool KeyProcessor::canProcessKey(uint32_t keyVal) const {
+    bool KeyProcessor::canProcessKey(uint32_t keyVal) {
         if (keyVal == kFcitxBackSpace || keyVal == kFcitxSpace || keyVal == kFcitxReturn || keyVal == kFcitxKP_Enter || keyVal == kFcitxTab) {
             return true;
         }
@@ -106,18 +108,18 @@ namespace lotus {
     std::string KeyProcessor::formatTime(const std::string& layout) {
         std::time_t now = std::time(nullptr);
         std::tm     tmNow{};
-#if defined(_WIN32)
+#ifdef _WIN32
         localtime_s(&tmNow, &now);
 #else
         localtime_r(&now, &tmNow);
 #endif
-        char buf[128];
+        std::array<char, 128> buf{};
         if (layout == "15") {
-            std::snprintf(buf, sizeof(buf), "%02d", tmNow.tm_hour);
-            return buf;
+            std::snprintf(buf.data(), buf.size(), "%02d", tmNow.tm_hour);
+            return buf.data();
         }
-        std::strftime(buf, sizeof(buf), layout.c_str(), &tmNow);
-        return buf;
+        std::strftime(buf.data(), buf.size(), layout.c_str(), &tmNow);
+        return buf.data();
     }
 
     const std::u32string& KeyProcessor::preedit() const {
@@ -148,7 +150,7 @@ namespace lotus {
         }
     }
 
-    bool KeyProcessor::isWordBreak(char32_t ch) const {
+    bool KeyProcessor::isWordBreak(char32_t ch) {
         if (ch == U' ' || ch == U'\t' || ch == U'\n' || ch == U'\r')
             return true;
         if (ch >= 33 && ch <= 47)
@@ -255,7 +257,7 @@ namespace lotus {
             return false;
         }
 
-        char32_t keyChar = static_cast<char32_t>(keyVal);
+        auto keyChar = static_cast<char32_t>(keyVal);
 
         if (states.has(KeyState::Lock)) {
             if (keyChar >= U'a' && keyChar <= U'z') {
@@ -292,25 +294,22 @@ namespace lotus {
                     nodes_.push_back(KeyNode{.displayChar = keyChar, .rawBaseChar = keyChar, .isTransformed = false});
                     rebuildPreedit();
                     return true;
-                } else {
-                    char32_t transformed = transformTurkish(last.displayChar, keyChar);
-                    if (transformed != 0) {
-                        last.rawBaseChar   = last.displayChar;
-                        last.displayChar   = transformed;
-                        last.isTransformed = true;
-                        rebuildPreedit();
-                        return true;
-                    } else {
-                        nodes_.push_back(KeyNode{.displayChar = keyChar, .rawBaseChar = keyChar, .isTransformed = false});
-                        rebuildPreedit();
-                        return true;
-                    }
                 }
-            } else {
+                char32_t transformed = transformTurkish(last.displayChar, keyChar);
+                if (transformed != 0) {
+                    last.rawBaseChar   = last.displayChar;
+                    last.displayChar   = transformed;
+                    last.isTransformed = true;
+                    rebuildPreedit();
+                    return true;
+                }
                 nodes_.push_back(KeyNode{.displayChar = keyChar, .rawBaseChar = keyChar, .isTransformed = false});
                 rebuildPreedit();
                 return true;
             }
+            nodes_.push_back(KeyNode{.displayChar = keyChar, .rawBaseChar = keyChar, .isTransformed = false});
+            rebuildPreedit();
+            return true;
         }
 
         // Regular character

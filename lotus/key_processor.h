@@ -49,7 +49,7 @@ namespace lotus {
     class KeyProcessor {
       public:
         KeyProcessor();
-        explicit KeyProcessor(InputMethod inputMethod, bool spellCheckWithDictsDefault = false);
+        explicit KeyProcessor(const InputMethod& inputMethod, bool spellCheckWithDictsDefault = false);
 
         void                                setOptions(const Options& options);
         [[nodiscard]] Options&              options();
@@ -63,7 +63,7 @@ namespace lotus {
         void                                setDictionary(std::shared_ptr<const Dictionary> dictionary);
 
         bool                                processKey(uint32_t keyVal, KeyStates states);
-        [[nodiscard]] bool                  canProcessKey(uint32_t keyVal) const;
+        [[nodiscard]] static bool           canProcessKey(uint32_t keyVal);
         [[nodiscard]] static bool           isValidState(KeyStates states);
 
         [[nodiscard]] const std::u32string& preedit() const;
@@ -77,8 +77,8 @@ namespace lotus {
 
       private:
         void                              rebuildPreedit();
-        bool                              isWordBreak(char32_t ch) const;
-        std::u32string                    expandMacro(std::u32string_view trigger, std::u32string_view replacement) const;
+        [[nodiscard]] static bool         isWordBreak(char32_t ch);
+        [[nodiscard]] std::u32string      expandMacro(std::u32string_view trigger, std::u32string_view replacement) const;
 
         Options                           options_{};
         bool                              shouldRestoreKeyStrokes_ = false;
